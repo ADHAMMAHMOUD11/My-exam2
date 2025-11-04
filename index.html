@@ -107,12 +107,12 @@ function submitQuiz(){
 
 // إرسال التقرير على واتساب
 function sendWhatsApp(correct, total, percentage, minutes, seconds){
-    let phone = "رقمك_هنا"; // حط رقمك بدون +
+    let phone = "201101158596"; // رقمك كامل مع كود مصر بدون +
     let message = `امتحان تالتة ثانوي - النتيجة:\nعدد الإجابات الصحيحة: ${correct} من ${total}\nالنسبة المئوية: ${percentage}%\nالوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
-    let url = `https://wa.me/${+201101158596}?text=${encodeURIComponent(message)}`;
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url,"_blank");
 }
 </script>
 
 </body>
-                                                         </html>
+        </html>
