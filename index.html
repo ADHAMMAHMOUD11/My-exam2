@@ -3,56 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>امتحان الصف الثالث الثانوي</title>
+<title>امتحان تالتة ثانوي</title>
 <style>
-    body {
-        font-family: 'Tahoma', sans-serif;
-        background-color: #f7f7f7;
-        margin: 0;
-        padding: 20px;
-        color: #333;
-    }
-    h1 {
-        text-align: center;
-        color: #d11a2a;
-    }
-    .timer {
-        text-align: center;
-        font-size: 20px;
-        margin-bottom: 20px;
-        color: #007bff;
-    }
-    .question {
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        margin: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        display: block;
-        margin: 20px auto;
-    }
-    button:hover {
-        background-color: #0056b3;
-    }
-    .result {
-        text-align: center;
-        font-size: 20px;
-        margin-top: 20px;
-        font-weight: bold;
-    }
+body { font-family:'Tahoma', sans-serif; background:#f7f7f7; padding:20px; }
+h1 { text-align:center; color:#d11a2a; }
+.timer { text-align:center; font-size:20px; margin-bottom:20px; color:#007bff; }
+.question { background:#fff; padding:15px; border-radius:8px; margin:10px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+button { background:#007bff; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; display:block; margin:20px auto;}
+button:hover { background:#0056b3; }
+.result { text-align:center; font-size:20px; margin-top:20px; font-weight:bold; }
 </style>
 </head>
 <body>
 
-<h1>نموذج امتحان </h1>
+<h1>امتحان تالتة ثانوي - نموذج تجريبي</h1>
 <div class="timer">الوقت المتبقي: <span id="time">03:00</span></div>
 
 <form id="quizForm">
@@ -97,52 +61,58 @@
 <div class="result" id="result"></div>
 
 <script>
-    // === تايمر العد التنازلي ===
-    let timeLeft = 180; // 3 دقايق = 180 ثانية
-    const timerDisplay = document.getElementById("time");
+// === تايمر ===
+let timeLeft = 180; // 3 دقايق
+let startTime = Date.now();
+const timerDisplay = document.getElementById("time");
 
-    const countdown = setInterval(() => {
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-        timerDisplay.textContent = 
-            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-        if (timeLeft <= 0) {
-            clearInterval(countdown);
-            submitQuiz();
-        }
-        timeLeft--;
-    }, 1000);
-
-    // === الإجابات الصحيحة ===
-    const answers = {
-        q1: "c",
-        q2: "b",
-        q3: "a",
-        q4: "a",
-        q5: "b"
-    };
-
-    function submitQuiz() {
+const countdown = setInterval(() => {
+    let elapsed = Math.floor((Date.now() - startTime)/1000);
+    let remaining = timeLeft - elapsed;
+    let minutes = Math.floor(remaining/60);
+    let seconds = remaining % 60;
+    if(remaining < 0) remaining = 0;
+    timerDisplay.textContent = `${Math.max(minutes,0).toString().padStart(2,'0')}:${Math.max(seconds,0).toString().padStart(2,'0')}`;
+    if(remaining <=0){
         clearInterval(countdown);
-
-        let correct = 0;
-        let total = Object.keys(answers).length;
-
-        for (let key in answers) {
-            const selected = document.querySelector(`input[name="${key}"]:checked`);
-            if (selected && selected.value === answers[key]) {
-                correct++;
-            }
-        }
-
-        let percentage = ((correct / total) * 100).toFixed(2);
-        let message = `عدد الإجابات الصحيحة: ${correct} من ${total}<br>النسبة المئوية: ${percentage}%`;
-
-        document.getElementById("result").innerHTML = message;
-        document.getElementById("quizForm").style.display = "none";
     }
+},1000);
+
+// الإجابات الصحيحة
+const answers = {q1:"c", q2:"b", q3:"a", q4:"a", q5:"b"};
+
+function submitQuiz(){
+    clearInterval(countdown);
+    let correct = 0;
+    let total = Object.keys(answers).length;
+    for(let key in answers){
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if(selected && selected.value === answers[key]) correct++;
+    }
+    let percentage = ((correct/total)*100).toFixed(2);
+
+    // الوقت اللي استغرقه
+    let elapsedSec = Math.floor((Date.now() - startTime)/1000);
+    let usedMinutes = Math.floor(elapsedSec/60);
+    let usedSeconds = elapsedSec % 60;
+
+    document.getElementById("result").innerHTML = `
+        عدد الإجابات الصحيحة: ${correct} من ${total}<br>
+        النسبة المئوية: ${percentage}%<br>
+        الوقت المستغرق: ${usedMinutes} دقيقة و ${usedSeconds} ثانية<br><br>
+        <button onclick="sendWhatsApp(${correct}, ${total}, ${percentage}, ${usedMinutes}, ${usedSeconds})">إرسال التقرير على واتساب</button>
+    `;
+    document.getElementById("quizForm").style.display = "none";
+}
+
+// إرسال التقرير على واتساب
+function sendWhatsApp(correct, total, percentage, minutes, seconds){
+    let phone = "رقمك_هنا"; // حط رقمك بدون +
+    let message = `امتحان تالتة ثانوي - النتيجة:\nعدد الإجابات الصحيحة: ${correct} من ${total}\nالنسبة المئوية: ${percentage}%\nالوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url,"_blank");
+}
 </script>
 
 </body>
-</html>
+                                                         </html>
