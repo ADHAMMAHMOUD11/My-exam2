@@ -16,7 +16,7 @@ button:hover { background:#0056b3; }
 </head>
 <body>
 
-<h1>امتحان تالتة ثانوي - نموذج </h1>
+<h1>امتحان تالتة ثانوي - نموذج تجريبي</h1>
 <div class="timer">الوقت المتبقي: <span id="time">10:00</span></div>
 
 <form id="quizForm">
@@ -144,14 +144,17 @@ function submitQuiz(){
     document.getElementById("quizForm").style.display = "none";
 }
 
-// === إرسال التقرير على واتساب ===
+// === إرسال التقرير على واتساب (يعمل داخل التطبيق) ===
 function sendWhatsApp(correct, total, percentage, minutes, seconds){
     let phone = "201101158596"; // رقمك بصيغة دولية بدون +
     let message = `📘 امتحان تالتة ثانوي - التقرير:\n✅ عدد الإجابات الصحيحة: ${correct} من ${total}\n📊 النسبة المئوية: ${percentage}%\n⏱️ الوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
-    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+
+    // رابط خاص لتطبيق واتساب (يعمل في تطبيقك بدون متصفح)
+    let waLink = `intent://send/?phone=${phone}&text=${encodeURIComponent(message)}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
+
+    window.location.href = waLink;
 }
 </script>
 
 </body>
-    </html>
+</html>
