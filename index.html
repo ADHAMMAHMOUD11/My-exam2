@@ -17,8 +17,8 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
 </head>
 <body>
 
-<h1>امتحان تالتة ثانوي - نموذج</h1>
-<div class="timer">الوقت المتبقي: <span id="time">04:00</span></div>
+<h1>امتحان تالتة ثانوي - نموذج تجريبي</h1>
+<div class="timer">الوقت المتبقي: <span id="time">03:00</span></div>
 
 <form id="quizForm">
 
@@ -102,28 +102,18 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
 </footer>
 
 <script>
-// منع الخروج أو إعادة التحميل بدون تسليم
-window.onbeforeunload = function() {
-  submitQuiz();
-  return "لو خرجت الآن، الورقة سيتم تسليمها تلقائيًا!";
-};
-
-// تايمر 3 دقائق
+// تايمر 3 دقايق
 let timeLeft = 180;
 let startTime = Date.now();
 const timerDisplay = document.getElementById("time");
-
 const countdown = setInterval(() => {
-    let elapsed = Math.floor((Date.now() - startTime)/1000);
-    let remaining = timeLeft - elapsed;
-    if(remaining < 0) remaining = 0;
-    let minutes = Math.floor(remaining/60);
-    let seconds = remaining % 60;
-    timerDisplay.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-    if(remaining <= 0){
-        clearInterval(countdown);
-        submitQuiz();
-    }
+  let elapsed = Math.floor((Date.now() - startTime)/1000);
+  let remaining = timeLeft - elapsed;
+  if(remaining < 0) remaining = 0;
+  let m = Math.floor(remaining/60);
+  let s = remaining % 60;
+  timerDisplay.textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  if(remaining <= 0){ clearInterval(countdown); submitQuiz(); }
 },1000);
 
 // الإجابات الصحيحة
@@ -132,43 +122,53 @@ const answers = {
   q6:"c", q7:"b", q8:"b", q9:"c", q10:"b"
 };
 
-let submitted = false; // لتجنب إرسال النتيجة أكثر من مرة
+let submitted = false;
 
 function submitQuiz(){
-    if(submitted) return;
-    submitted = true;
-    clearInterval(countdown);
-    let correct = 0;
-    let total = Object.keys(answers).length;
+  if(submitted) return;
+  submitted = true;
+  clearInterval(countdown);
 
-    for(let key in answers){
-        const selected = document.querySelector(`input[name="${key}"]:checked`);
-        if(selected && selected.value === answers[key]) correct++;
+  let correct = 0;
+  let total = Object.keys(answers).length;
+  let details = "";
+
+  for(let key in answers){
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    let qNum = key.replace("q","");
+    if(selected){
+      if(selected.value === answers[key]){
+        correct++;
+        details += `سؤال ${qNum}: ✅ صح\n`;
+      } else {
+        details += `سؤال ${qNum}: ❌ غلط\n`;
+      }
+    } else {
+      details += `سؤال ${qNum}: ❌ لم يجب\n`;
     }
+  }
 
-    let percentage = ((correct/total)*100).toFixed(2);
-    let elapsedSec = Math.floor((Date.now() - startTime)/1000);
-    let usedMinutes = Math.floor(elapsedSec/60);
-    let usedSeconds = elapsedSec % 60;
+  let wrong = total - correct;
+  let percentage = ((correct/total)*100).toFixed(2);
+  let elapsed = Math.floor((Date.now() - startTime)/1000);
+  let minutes = Math.floor(elapsed/60);
+  let seconds = elapsed % 60;
 
-    // نرسل التقرير مباشرة على واتساب
-    sendWhatsApp(correct, total, percentage, usedMinutes, usedSeconds);
+  // إرسال التفاصيل على واتساب
+  sendWhatsApp(correct, wrong, total, percentage, minutes, seconds, details);
 
-    // نخفي الفورم
-    document.getElementById("quizForm").style.display = "none";
-
-    // رسالة شكر
-    document.getElementById("thankMessage").innerHTML = "شكراً لإكمال الامتحان، سيتم مراجعة نتيجتك قريباً 🎉";
+  // إخفاء الامتحان وإظهار رسالة الشكر
+  document.getElementById("quizForm").style.display = "none";
+  document.getElementById("thankMessage").innerHTML = "تم إرسال إجاباتك بنجاح ✅<br>شكرًا لمشاركتك، بالتوفيق دائمًا 🎉";
 }
 
-// إرسال التقرير على واتساب
-function sendWhatsApp(correct, total, percentage, minutes, seconds){
-    let phone = "201101158596"; // رقمك الدولي بدون +
-    let message = `📘 امتحان تالتة ثانوي - التقرير:\n✅ عدد الإجابات الصحيحة: ${correct} من ${total}\n📊 النسبة المئوية: ${percentage}%\n⏱️ الوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية\n\nشكراً للطالب على المشاركة.`;
-    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.location.href = url;
+function sendWhatsApp(correct, wrong, total, percentage, minutes, seconds, details){
+  let phone = "201101158596"; // رقمك الدولي بدون +
+  let message = `📘 تقرير امتحان تالتة ثانوي:\n✅ عدد الإجابات الصحيحة: ${correct}\n❌ عدد الإجابات الخاطئة: ${wrong}\n📊 النسبة المئوية: ${percentage}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n🔍 تفاصيل الإجابات:\n${details}`;
+  let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.location.href = url;
 }
 </script>
 
 </body>
-  </html>
+      </html>
