@@ -17,88 +17,52 @@ button:hover { background:#0056b3; }
 <body>
 
 <h1>امتحان تالتة ثانوي - نموذج تجريبي</h1>
-<div class="timer">الوقت المتبقي: <span id="time">10:00</span></div>
+<div class="timer">الوقت المتبقي: <span id="time">03:00</span></div>
 
 <form id="quizForm">
+    <div class="question">
+        <p>1. ما نتيجة 12 ÷ 3 ؟</p>
+        <input type="radio" name="q1" value="a"> 5<br>
+        <input type="radio" name="q1" value="b"> 3<br>
+        <input type="radio" name="q1" value="c"> 4<br>
+    </div>
 
-<div class="question">
-    <p>1. ما نتيجة 12 ÷ 3 ؟</p>
-    <input type="radio" name="q1" value="a"> 5<br>
-    <input type="radio" name="q1" value="b"> 3<br>
-    <input type="radio" name="q1" value="c"> 4<br>
-</div>
+    <div class="question">
+        <p>2. ما عاصمة فرنسا؟</p>
+        <input type="radio" name="q2" value="a"> برلين<br>
+        <input type="radio" name="q2" value="b"> باريس<br>
+        <input type="radio" name="q2" value="c"> مدريد<br>
+    </div>
 
-<div class="question">
-    <p>2. ما عاصمة فرنسا؟</p>
-    <input type="radio" name="q2" value="a"> برلين<br>
-    <input type="radio" name="q2" value="b"> باريس<br>
-    <input type="radio" name="q2" value="c"> مدريد<br>
-</div>
+    <div class="question">
+        <p>3. ما هو الغاز الذي يتنفسه الإنسان؟</p>
+        <input type="radio" name="q3" value="a"> الأكسجين<br>
+        <input type="radio" name="q3" value="b"> النيتروجين<br>
+        <input type="radio" name="q3" value="c"> ثاني أكسيد الكربون<br>
+    </div>
 
-<div class="question">
-    <p>3. ما هو الغاز الذي يتنفسه الإنسان؟</p>
-    <input type="radio" name="q3" value="a"> الأكسجين<br>
-    <input type="radio" name="q3" value="b"> النيتروجين<br>
-    <input type="radio" name="q3" value="c"> ثاني أكسيد الكربون<br>
-</div>
+    <div class="question">
+        <p>4. في أي عام قامت ثورة يوليو؟</p>
+        <input type="radio" name="q4" value="a"> 1952<br>
+        <input type="radio" name="q4" value="b"> 1948<br>
+        <input type="radio" name="q4" value="c"> 1967<br>
+    </div>
 
-<div class="question">
-    <p>4. في أي عام قامت ثورة يوليو؟</p>
-    <input type="radio" name="q4" value="a"> 1952<br>
-    <input type="radio" name="q4" value="b"> 1948<br>
-    <input type="radio" name="q4" value="c"> 1967<br>
-</div>
+    <div class="question">
+        <p>5. ما هو أكبر كوكب في المجموعة الشمسية؟</p>
+        <input type="radio" name="q5" value="a"> الأرض<br>
+        <input type="radio" name="q5" value="b"> المشتري<br>
+        <input type="radio" name="q5" value="c"> زحل<br>
+    </div>
 
-<div class="question">
-    <p>5. ما هو أكبر كوكب في المجموعة الشمسية؟</p>
-    <input type="radio" name="q5" value="a"> الأرض<br>
-    <input type="radio" name="q5" value="b"> المشتري<br>
-    <input type="radio" name="q5" value="c"> زحل<br>
-</div>
-
-<div class="question">
-    <p>6. من مكتشف قانون الجاذبية؟</p>
-    <input type="radio" name="q6" value="a"> أينشتاين<br>
-    <input type="radio" name="q6" value="b"> نيوتن<br>
-    <input type="radio" name="q6" value="c"> جاليليو<br>
-</div>
-
-<div class="question">
-    <p>7. كم عدد قارات العالم؟</p>
-    <input type="radio" name="q7" value="a"> 5<br>
-    <input type="radio" name="q7" value="b"> 6<br>
-    <input type="radio" name="q7" value="c"> 7<br>
-</div>
-
-<div class="question">
-    <p>8. ما هو الكوكب الأحمر؟</p>
-    <input type="radio" name="q8" value="a"> المريخ<br>
-    <input type="radio" name="q8" value="b"> الزهرة<br>
-    <input type="radio" name="q8" value="c"> عطارد<br>
-</div>
-
-<div class="question">
-    <p>9. ما عاصمة مصر؟</p>
-    <input type="radio" name="q9" value="a"> القاهرة<br>
-    <input type="radio" name="q9" value="b"> الجيزة<br>
-    <input type="radio" name="q9" value="c"> الإسكندرية<br>
-</div>
-
-<div class="question">
-    <p>10. كم عدد أضلاع المثلث؟</p>
-    <input type="radio" name="q10" value="a"> 3<br>
-    <input type="radio" name="q10" value="b"> 4<br>
-    <input type="radio" name="q10" value="c"> 5<br>
-</div>
-
-<button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
+    <button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
 </form>
 
 <div class="result" id="result"></div>
 
 <script>
-// === تايمر 10 دقايق ===
-let timeLeft = 600;
+// === تايمر 3 دقايق ===
+let timeLeft = 180;
 let startTime = Date.now();
 const timerDisplay = document.getElementById("time");
 
@@ -115,10 +79,7 @@ const countdown = setInterval(() => {
 },1000);
 
 // الإجابات الصحيحة
-const answers = {
-    q1:"c", q2:"b", q3:"a", q4:"a", q5:"b",
-    q6:"b", q7:"c", q8:"a", q9:"a", q10:"a"
-};
+const answers = {q1:"c", q2:"b", q3:"a", q4:"a", q5:"b"};
 
 function submitQuiz(){
     clearInterval(countdown);
@@ -144,15 +105,19 @@ function submitQuiz(){
     document.getElementById("quizForm").style.display = "none";
 }
 
-// === إرسال التقرير على واتساب (يعمل داخل التطبيق) ===
+// === إرسال التقرير على واتساب ===
 function sendWhatsApp(correct, total, percentage, minutes, seconds){
-    let phone = "201101158596"; // رقمك بصيغة دولية بدون +
-    let message = `📘 امتحان تالتة ثانوي - التقرير:\n✅ عدد الإجابات الصحيحة: ${correct} من ${total}\n📊 النسبة المئوية: ${percentage}%\n⏱️ الوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
-
-    // رابط خاص لتطبيق واتساب (يعمل في تطبيقك بدون متصفح)
-    let waLink = `intent://send/?phone=${phone}&text=${encodeURIComponent(message)}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
-
-    window.location.href = waLink;
+    const phone = "201101158596"; // رقمك بالصيغة الدولية بدون +
+    const message = `امتحان تالتة ثانوي - النتيجة:\nعدد الإجابات الصحيحة: ${correct} من ${total}\nالنسبة المئوية: ${percentage}%\nالوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
+    
+    // نحاول فتح التطبيق مباشرة أولاً
+    const waUrl = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}`;
+    window.location.href = waUrl;
+    
+    // لو التطبيق مش مفتوح بعد ثانيتين، نفتح نسخة المتصفح
+    setTimeout(() => {
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+    }, 2000);
 }
 </script>
 
