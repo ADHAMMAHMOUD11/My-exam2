@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>امتحان تالتة ثانوي</title>
+<style>
+body { font-family:'Tahoma', sans-serif; background:#f7f7f7; padding:20px; }
+h1 { text-align:center; color:#d11a2a; }
+.timer { text-align:center; font-size:20px; margin-bottom:20px; color:#007bff; }
+.question { background:#fff; padding:15px; border-radius:8px; margin:10px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+button { background:#007bff; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; display:block; margin:20px auto;}
+button:hover { background:#0056b3; }
+.result { text-align:center; font-size:20px; margin-top:20px; font-weight:bold; }
+</style>
+</head>
+<body>
 
+<h1>امتحان تالتة ثانوي - نموذج تجريبي</h1>
+<div class="timer">الوقت المتبقي: <span id="time">03:00</span></div>
+
+<form id="quizForm">
+    <div class="question">
+        <p>1. ما نتيجة 12 ÷ 3 ؟</p>
+        <input type="radio" name="q1" value="a"> 5<br>
+        <input type="radio" name="q1" value="b"> 3<br>
+        <input type="radio" name="q1" value="c"> 4<br>
+    </div>
+
+    <div class="question">
+        <p>2. ما عاصمة فرنسا؟</p>
+        <input type="radio" name="q2" value="a"> برلين<br>
+        <input type="radio" name="q2" value="b"> باريس<br>
+        <input type="radio" name="q2" value="c"> مدريد<br>
+    </div>
+
+    <div class="question">
+        <p>3. ما هو الغاز الذي يتنفسه الإنسان؟</p>
+        <input type="radio" name="q3" value="a"> الأكسجين<br>
+        <input type="radio" name="q3" value="b"> النيتروجين<br>
+        <input type="radio" name="q3" value="c"> ثاني أكسيد الكربون<br>
+    </div>
+
+    <div class="question">
+        <p>4. في أي عام قامت ثورة يوليو؟</p>
+        <input type="radio" name="q4" value="a"> 1952<br>
+        <input type="radio" name="q4" value="b"> 1948<br>
+        <input type="radio" name="q4" value="c"> 1967<br>
+    </div>
+
+    <div class="question">
+        <p>5. ما هو أكبر كوكب في المجموعة الشمسية؟</p>
+        <input type="radio" name="q5" value="a"> الأرض<br>
+        <input type="radio" name="q5" value="b"> المشتري<br>
+        <input type="radio" name="q5" value="c"> زحل<br>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
+</form>
+
+<div class="result" id="result"></div>
+
+<script>
+// === تايمر 3 دقايق ===
+let timeLeft = 180;
+let startTime = Date.now();
+const timerDisplay = document.getElementById("time");
+
+const countdown = setInterval(() => {
+    let elapsed = Math.floor((Date.now() - startTime)/1000);
+    let remaining = timeLeft - elapsed;
+    if(remaining < 0) remaining = 0;
+    let minutes = Math.floor(remaining/60);
+    let seconds = remaining % 60;
+    timerDisplay.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+    if(remaining <=0){
+        clearInterval(countdown);
+    }
+},1000);
+
+// الإجابات الصحيحة
+const answers = {q1:"c", q2:"b", q3:"a", q4:"a", q5:"b"};
+
+function submitQuiz(){
+    clearInterval(countdown);
+    let correct = 0;
+    let total = Object.keys(answers).length;
+    for(let key in answers){
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if(selected && selected.value === answers[key]) correct++;
+    }
+    let percentage = ((correct/total)*100).toFixed(2);
+
+    // الوقت المستغرق
+    let elapsedSec = Math.floor((Date.now() - startTime)/1000);
+    let usedMinutes = Math.floor(elapsedSec/60);
+    let usedSeconds = elapsedSec % 60;
+
+    document.getElementById("result").innerHTML = `
+        عدد الإجابات الصحيحة: ${correct} من ${total}<br>
+        النسبة المئوية: ${percentage}%<br>
+        الوقت المستغرق: ${usedMinutes} دقيقة و ${usedSeconds} ثانية<br><br>
+        <button onclick="sendWhatsApp(${correct}, ${total}, ${percentage}, ${usedMinutes}, ${usedSeconds})">إرسال التقرير على واتساب</button>
+    `;
+    document.getElementById("quizForm").style.display = "none";
+}
+
+// === إرسال التقرير على واتساب ===
+function sendWhatsApp(correct, total, percentage, minutes, seconds){
+    let phone = "201101158596"; // رقمك بالصيغة الدولية بدون +
+    let message = `امتحان تالتة ثانوي - النتيجة:\nعدد الإجابات الصحيحة: ${correct} من ${total}\nالنسبة المئوية: ${percentage}%\nالوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
+    let url = `https://wa.me/20${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url,"_blank");
+}
+</script>
+
+</body>
+          </html>
