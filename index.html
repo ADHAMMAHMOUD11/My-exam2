@@ -17,9 +17,10 @@ button:hover { background:#0056b3; }
 <body>
 
 <h1>امتحان تالتة ثانوي - نموذج تجريبي</h1>
-<div class="timer">الوقت المتبقي: <span id="time">03:00</span></div>
+<div class="timer">⏰ الوقت المتبقي: <span id="time">20:00</span></div>
 
 <form id="quizForm">
+
     <div class="question">
         <p>1. ما نتيجة 12 ÷ 3 ؟</p>
         <input type="radio" name="q1" value="a"> 5<br>
@@ -55,14 +56,49 @@ button:hover { background:#0056b3; }
         <input type="radio" name="q5" value="c"> زحل<br>
     </div>
 
+    <div class="question">
+        <p>6. من الذي بنى الهرم الأكبر؟</p>
+        <input type="radio" name="q6" value="a"> خوفو<br>
+        <input type="radio" name="q6" value="b"> خفرع<br>
+        <input type="radio" name="q6" value="c"> منكاورع<br>
+    </div>
+
+    <div class="question">
+        <p>7. كم عدد الكواكب في المجموعة الشمسية؟</p>
+        <input type="radio" name="q7" value="a"> 7<br>
+        <input type="radio" name="q7" value="b"> 8<br>
+        <input type="radio" name="q7" value="c"> 9<br>
+    </div>
+
+    <div class="question">
+        <p>8. من مكتشف قانون الجاذبية؟</p>
+        <input type="radio" name="q8" value="a"> نيوتن<br>
+        <input type="radio" name="q8" value="b"> أينشتاين<br>
+        <input type="radio" name="q8" value="c"> جاليليو<br>
+    </div>
+
+    <div class="question">
+        <p>9. ما هو الحيوان الذي يُلقب بسفينة الصحراء؟</p>
+        <input type="radio" name="q9" value="a"> الجمل<br>
+        <input type="radio" name="q9" value="b"> الحصان<br>
+        <input type="radio" name="q9" value="c"> الفيل<br>
+    </div>
+
+    <div class="question">
+        <p>10. كم عدد قارات العالم؟</p>
+        <input type="radio" name="q10" value="a"> 5<br>
+        <input type="radio" name="q10" value="b"> 6<br>
+        <input type="radio" name="q10" value="c"> 7<br>
+    </div>
+
     <button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
 </form>
 
 <div class="result" id="result"></div>
 
 <script>
-// === تايمر 3 دقايق ===
-let timeLeft = 180;
+// === تايمر 10 دقايق ===
+let timeLeft = 600;
 let startTime = Date.now();
 const timerDisplay = document.getElementById("time");
 
@@ -73,13 +109,14 @@ const countdown = setInterval(() => {
     let minutes = Math.floor(remaining/60);
     let seconds = remaining % 60;
     timerDisplay.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-    if(remaining <=0){
+    if(remaining <= 0){
         clearInterval(countdown);
+        submitQuiz();
     }
 },1000);
 
 // الإجابات الصحيحة
-const answers = {q1:"c", q2:"b", q3:"a", q4:"a", q5:"b"};
+const answers = {q1:"c", q2:"b", q3:"a", q4:"a", q5:"b", q6:"a", q7:"b", q8:"a", q9:"a", q10:"c"};
 
 function submitQuiz(){
     clearInterval(countdown);
@@ -97,29 +134,24 @@ function submitQuiz(){
     let usedSeconds = elapsedSec % 60;
 
     document.getElementById("result").innerHTML = `
-        عدد الإجابات الصحيحة: ${correct} من ${total}<br>
-        النسبة المئوية: ${percentage}%<br>
-        الوقت المستغرق: ${usedMinutes} دقيقة و ${usedSeconds} ثانية<br><br>
-        <button onclick="sendWhatsApp(${correct}, ${total}, ${percentage}, ${usedMinutes}, ${usedSeconds})">إرسال التقرير على واتساب</button>
+        🧾 عدد الإجابات الصحيحة: ${correct} من ${total}<br>
+        📊 النسبة المئوية: ${percentage}%<br>
+        ⏱️ الوقت المستغرق: ${usedMinutes} دقيقة و ${usedSeconds} ثانية<br><br>
+        <button onclick="sendWhatsApp(${correct}, ${total}, ${percentage}, ${usedMinutes}, ${usedSeconds})">📤 إرسال التقرير على واتساب</button>
     `;
     document.getElementById("quizForm").style.display = "none";
 }
 
-// === إرسال التقرير على واتساب ===
+// === إرسال التقرير على واتساب (يعمل من داخل التطبيق بدون خطأ) ===
 function sendWhatsApp(correct, total, percentage, minutes, seconds){
-    const phone = "201101158596"; // رقمك بالصيغة الدولية بدون +
-    const message = `امتحان تالتة ثانوي - النتيجة:\nعدد الإجابات الصحيحة: ${correct} من ${total}\nالنسبة المئوية: ${percentage}%\nالوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
-    
-    // نحاول فتح التطبيق مباشرة أولاً
-    const waUrl = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}`;
-    window.location.href = waUrl;
-    
-    // لو التطبيق مش مفتوح بعد ثانيتين، نفتح نسخة المتصفح
-    setTimeout(() => {
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-    }, 2000);
+    let phone = "201101158596"; // رقمك بصيغة دولية بدون +
+    let message = `📘 امتحان تالتة ثانوي - التقرير:\n✅ عدد الإجابات الصحيحة: ${correct} من ${total}\n📊 النسبة المئوية: ${percentage}%\n⏱️ الوقت المستغرق: ${minutes} دقيقة و ${seconds} ثانية`;
+
+    // نفتح واتساب خارج التطبيق مباشرة
+    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_system");
 }
 </script>
 
 </body>
-</html>
+                                                         </html>
