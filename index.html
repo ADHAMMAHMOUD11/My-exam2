@@ -3,16 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>امتحان - دخول مرة واحدة</title>
+<title>امتحان — إرسال النتيجة للواتساب ثم عرض النتائج</title>
 <style>
   :root{
-    --bg:#fbfdff; --card:#fff; --primary:#0b63d6; --accent:#d32f2f; --muted:#6b7280;
+    --bg:#f3f8ff; --card:#fff; --primary:#0b63d6; --accent:#d32f2f; --muted:#5f6b78;
   }
   *{box-sizing:border-box}
-  body{
-    margin:0; font-family:"Tajawal","Cairo",Tahoma,Arial,sans-serif;
-    background:linear-gradient(180deg,#f3f8ff,#ffffff); color:#071534; direction:rtl;
-  }
+  body{margin:0;font-family:"Tajawal","Cairo",Tahoma,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#ffffff);color:#072042;direction:rtl}
   .topbar{height:12px;background:linear-gradient(90deg,var(--accent),#ff8a80);position:relative;overflow:hidden}
   .progress{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,var(--accent),#ff8a80)}
   .wrap{max-width:980px;margin:18px auto;padding:18px}
@@ -20,7 +17,7 @@
   header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
   h1{margin:0;color:var(--primary);font-size:20px}
   .timer{padding:8px 12px;border-radius:8px;background:rgba(11,99,214,0.06);color:var(--primary);font-weight:700}
-  .grid{display:grid;grid-template-columns:1fr 340px;gap:16px}
+  .grid{display:grid;grid-template-columns:1fr 320px;gap:16px}
   .left{padding-right:6px}
   .question{margin-bottom:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border-right:5px solid var(--primary);box-shadow:0 6px 14px rgba(11,63,128,0.03)}
   .question p{margin:0 0 8px;font-weight:700;color:#123}
@@ -28,13 +25,12 @@
   label.option:hover{transform:translateY(-2px);border-color:rgba(11,63,128,0.06)}
   input[type="radio"]{margin-left:8px;transform:scale(1.05)}
   .panel{position:sticky;top:20px;padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbff);box-shadow:0 8px 18px rgba(11,63,128,0.05)}
-  .panel h3{margin:0 0 8px;color:var(--primary)}
   .actions{text-align:center;margin-top:14px}
   button.primary{background:var(--primary);color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:800;font-size:16px}
-  .locked{padding:18px;text-align:center;color:var(--accent);font-weight:700}
   .result{margin-top:14px;background:#f6fbff;border-radius:10px;padding:12px;border:1px solid #e6f0ff}
   .correct{color:green;font-weight:700}
   .wrong{color:#c62828;font-weight:700}
+  .locked{padding:18px;text-align:center;color:var(--accent);font-weight:700;margin-top:12px;border-radius:8px;border:1px solid rgba(211,47,47,0.08)}
   footer{margin-top:14px;text-align:center;color:var(--muted);font-size:13px}
   @media(max-width:880px){ .grid{grid-template-columns:1fr} .panel{position:static;margin-top:12px} }
 </style>
@@ -45,138 +41,139 @@
   <div class="wrap">
     <div class="card">
       <header>
-        <h1>امتحان — دخول مرة واحدة</h1>
+        <h1>امتحان — إرسال النتيجة للواتساب ثم عرض النتائج</h1>
         <div class="timer" aria-live="polite">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
       </header>
 
-      <div class="grid" id="mainGrid">
-        <div class="left card" id="examCard">
-          <form id="quizForm">
-            <!-- أسئلة 1..15 -->
-            <div class="question" id="q1">
-              <p>1. أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
-              <label class="option"><input type="radio" name="q1" value="a"> لوح الكتف</label>
-              <label class="option"><input type="radio" name="q1" value="b"> المفصل</label>
-              <label class="option"><input type="radio" name="q1" value="c"> الأربطة</label>
-              <label class="option"><input type="radio" name="q1" value="d"> منطقة الحوض</label>
+      <div class="grid">
+        <div class="left">
+          <div id="examCard" class="card">
+            <form id="quizForm" autocomplete="off">
+              <!-- الأسئلة 1..15 -->
+              <div class="question" id="q1">
+                <p>1. أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
+                <label class="option"><input type="radio" name="q1" value="a"> لوح الكتف</label>
+                <label class="option"><input type="radio" name="q1" value="b"> المفصل</label>
+                <label class="option"><input type="radio" name="q1" value="c"> الأربطة</label>
+                <label class="option"><input type="radio" name="q1" value="d"> منطقة الحوض</label>
+              </div>
+
+              <div class="question" id="q2">
+                <p>2. النسبة بين طول الضلع رقم (6) إلى طول الضلع رقم (1):</p>
+                <label class="option"><input type="radio" name="q2" value="a"> أكبر من واحد</label>
+                <label class="option"><input type="radio" name="q2" value="b"> أقل من واحد</label>
+                <label class="option"><input type="radio" name="q2" value="c"> يساوي واحد</label>
+                <label class="option"><input type="radio" name="q2" value="d"> لا يمكن تحديده</label>
+              </div>
+
+              <div class="question" id="q3">
+                <p>3. النسبة بين عدد عظام الحزام الحوضي إلى عظام الحزام الصدري كنسبة:</p>
+                <label class="option"><input type="radio" name="q3" value="a">(1 إلى 2)</label>
+                <label class="option"><input type="radio" name="q3" value="b">(1 إلى 1)</label>
+                <label class="option"><input type="radio" name="q3" value="c">(3 إلى 2)</label>
+                <label class="option"><input type="radio" name="q3" value="d">(2 إلى 1)</label>
+              </div>
+
+              <div class="question" id="q4">
+                <p>4. أكبر تجاويف الهيكل الطرفي عمقًا:</p>
+                <label class="option"><input type="radio" name="q4" value="a"> تجويف الزند</label>
+                <label class="option"><input type="radio" name="q4" value="b"> التجويف الحُقِّي</label>
+                <label class="option"><input type="radio" name="q4" value="c"> التجويف الأروح</label>
+                <label class="option"><input type="radio" name="q4" value="d"> يكون مفصل محدود الحركة</label>
+              </div>
+
+              <div class="question" id="q5">
+                <p>5. تهدف حركة الجذور الشادّة إلى:</p>
+                <label class="option"><input type="radio" name="q5" value="a"> تأمين ساق النبات والأوراق</label>
+                <label class="option"><input type="radio" name="q5" value="b"> زيادة طول الجذور الشادّة</label>
+                <label class="option"><input type="radio" name="q5" value="c"> زيادة القدرة على امتصاص الماء</label>
+                <label class="option"><input type="radio" name="q5" value="d"> زيادة قدرة النبات على القيام بعملية البناء الضوئي</label>
+              </div>
+
+              <div class="question" id="q6">
+                <p>6. أي المؤثرات التالية تزيد من سرعة تباعد وريقات المستحية؟</p>
+                <label class="option"><input type="radio" name="q6" value="a"> سقوط الأمطار</label>
+                <label class="option"><input type="radio" name="q6" value="b"> الظلام</label>
+                <label class="option"><input type="radio" name="q6" value="c"> الضوء</label>
+              </div>
+
+              <div class="question" id="q7">
+                <p>7. يمكن الاستدلال على حدوث الانسياب السيتوبلازمي بحركة:</p>
+                <label class="option"><input type="radio" name="q7" value="a"> عضويات تتصف بتعدد ألوانها</label>
+                <label class="option"><input type="radio" name="q7" value="b"> عضيات عديمة اللون</label>
+                <label class="option"><input type="radio" name="q7" value="c"> الجدار الخلوي</label>
+                <label class="option"><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
+              </div>
+
+              <div class="question" id="q8">
+                <p>8. تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
+                <label class="option"><input type="radio" name="q8" value="a"> اللحم</label>
+                <label class="option"><input type="radio" name="q8" value="b"> الخلايا العضلية</label>
+                <label class="option"><input type="radio" name="q8" value="c"> الليفيات العضلية</label>
+                <label class="option"><input type="radio" name="q8" value="d"> القطع العضلية</label>
+              </div>
+
+              <div class="question" id="q9">
+                <p>9. الأيونات التي يرتبط معدل مرورها خلال غشاء الليفة العضلية بإثارة العضلة:</p>
+                <label class="option"><input type="radio" name="q9" value="a"> الصوديوم</label>
+                <label class="option"><input type="radio" name="q9" value="b"> الكالسيوم والصوديوم</label>
+                <label class="option"><input type="radio" name="q9" value="c"> الكلور والبروتين</label>
+                <label class="option"><input type="radio" name="q9" value="d"> الكالسيوم والبوتاسيوم</label>
+              </div>
+
+              <div class="question" id="q10">
+                <p>10. تكون خلايا العضلات التي تقوم بنشاط عنيف نسبة عالية من:</p>
+                <label class="option"><input type="radio" name="q10" value="a"> حمض اللاكتيك</label>
+                <label class="option"><input type="radio" name="q10" value="b"> حمض البيروفيك</label>
+                <label class="option"><input type="radio" name="q10" value="c"> حمض الستريك</label>
+                <label class="option"><input type="radio" name="q10" value="d"> حمض الأسيتيك</label>
+              </div>
+
+              <div class="question" id="q11">
+                <p>11. من أسباب الإجهاد السريع لعضلة الفخذ:</p>
+                <label class="option"><input type="radio" name="q11" value="a"> زيادة نسبة الجليكوجين بالعضلة</label>
+                <label class="option"><input type="radio" name="q11" value="b"> ضيق الشرايين المغذية للعضلة</label>
+                <label class="option"><input type="radio" name="q11" value="c"> زيادة الأكسجين الوارد للعضلة</label>
+                <label class="option"><input type="radio" name="q11" value="d"> نقص ثاني أكسيد الكربون بالعضلة</label>
+              </div>
+
+              <div class="question" id="q12">
+                <p>12. النسبة بين حجم عظمة الكيعرة إلى حجم عظمة الزند:</p>
+                <label class="option"><input type="radio" name="q12" value="a"> تساوي واحد</label>
+                <label class="option"><input type="radio" name="q12" value="b"> أقل من واحد</label>
+                <label class="option"><input type="radio" name="q12" value="c"> أكبر من واحد</label>
+                <label class="option"><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
+              </div>
+
+              <div class="question" id="q13">
+                <p>13. الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
+                <label class="option"><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
+                <label class="option"><input type="radio" name="q13" value="b"> النتوء الشوكي</label>
+                <label class="option"><input type="radio" name="q13" value="c"> عظمة القص</label>
+                <label class="option"><input type="radio" name="q13" value="d"> جسم الفقرة القطنية</label>
+              </div>
+
+              <div class="question" id="q14">
+                <p>14. تتغذى الغضاريف عن طريق:</p>
+                <label class="option"><input type="radio" name="q14" value="a"> أوعية دموية شريانية</label>
+                <label class="option"><input type="radio" name="q14" value="b"> أوعية دموية وريدية</label>
+                <label class="option"><input type="radio" name="q14" value="c"> الانتشار من العظام</label>
+                <label class="option"><input type="radio" name="q14" value="d"> الاسموزية من العظام</label>
+              </div>
+
+              <div class="question" id="q15">
+                <p>15. أصغر وحدة تخزين هي:</p>
+                <label class="option"><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
+                <label class="option"><input type="radio" name="q15" value="b"> الليفة العضلية</label>
+                <label class="option"><input type="radio" name="q15" value="c"> القطعة العضلية</label>
+              </div>
+
+            </form>
+
+            <div class="actions">
+              <button id="submitBtn" class="primary">تسليم</button>
             </div>
-
-            <div class="question" id="q2">
-              <p>2. النسبة بين طول الضلع رقم (6) إلى طول الضلع رقم (1):</p>
-              <label class="option"><input type="radio" name="q2" value="a"> أكبر من واحد</label>
-              <label class="option"><input type="radio" name="q2" value="b"> أقل من واحد</label>
-              <label class="option"><input type="radio" name="q2" value="c"> يساوي واحد</label>
-              <label class="option"><input type="radio" name="q2" value="d"> لا يمكن تحديده</label>
-            </div>
-
-            <div class="question" id="q3">
-              <p>3. النسبة بين عدد عظام الحزام الحوضي إلى عظام الحزام الصدري كنسبة:</p>
-              <label class="option"><input type="radio" name="q3" value="a">(1 إلى 2)</label>
-              <label class="option"><input type="radio" name="q3" value="b">(1 إلى 1)</label>
-              <label class="option"><input type="radio" name="q3" value="c">(3 إلى 2)</label>
-              <label class="option"><input type="radio" name="q3" value="d">(2 إلى 1)</label>
-            </div>
-
-            <div class="question" id="q4">
-              <p>4. أكبر تجاويف الهيكل الطرفي عمقًا:</p>
-              <label class="option"><input type="radio" name="q4" value="a"> تجويف الزند</label>
-              <label class="option"><input type="radio" name="q4" value="b"> التجويف الحُقِّي</label>
-              <label class="option"><input type="radio" name="q4" value="c"> التجويف الأروح</label>
-              <label class="option"><input type="radio" name="q4" value="d"> يكون مفصل محدود الحركة</label>
-            </div>
-
-            <div class="question" id="q5">
-              <p>5. تهدف حركة الجذور الشادّة إلى:</p>
-              <label class="option"><input type="radio" name="q5" value="a"> تأمين ساق النبات والأوراق</label>
-              <label class="option"><input type="radio" name="q5" value="b"> زيادة طول الجذور الشادّة</label>
-              <label class="option"><input type="radio" name="q5" value="c"> زيادة القدرة على امتصاص الماء</label>
-              <label class="option"><input type="radio" name="q5" value="d"> زيادة قدرة النبات على القيام بعملية البناء الضوئي</label>
-            </div>
-
-            <div class="question" id="q6">
-              <p>6. أي المؤثرات التالية تزيد من سرعة تباعد وريقات المستحية؟</p>
-              <label class="option"><input type="radio" name="q6" value="a"> سقوط الأمطار</label>
-              <label class="option"><input type="radio" name="q6" value="b"> الظلام</label>
-              <label class="option"><input type="radio" name="q6" value="c"> الضوء</label>
-            </div>
-
-            <div class="question" id="q7">
-              <p>7. يمكن الاستدلال على حدوث الانسياب السيتوبلازمي بحركة:</p>
-              <label class="option"><input type="radio" name="q7" value="a"> عضويات تتصف بتعدد ألوانها</label>
-              <label class="option"><input type="radio" name="q7" value="b"> عضيات عديمة اللون</label>
-              <label class="option"><input type="radio" name="q7" value="c"> الجدار الخلوي</label>
-              <label class="option"><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
-            </div>
-
-            <div class="question" id="q8">
-              <p>8. تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
-              <label class="option"><input type="radio" name="q8" value="a"> اللحم</label>
-              <label class="option"><input type="radio" name="q8" value="b"> الخلايا العضلية</label>
-              <label class="option"><input type="radio" name="q8" value="c"> الليفيات العضلية</label>
-              <label class="option"><input type="radio" name="q8" value="d"> القطع العضلية</label>
-            </div>
-
-            <div class="question" id="q9">
-              <p>9. الأيونات التي يرتبط معدل مرورها خلال غشاء الليفة العضلية بإثارة العضلة:</p>
-              <label class="option"><input type="radio" name="q9" value="a"> الصوديوم</label>
-              <label class="option"><input type="radio" name="q9" value="b"> الكالسيوم والصوديوم</label>
-              <label class="option"><input type="radio" name="q9" value="c"> الكلور والبروتين</label>
-              <label class="option"><input type="radio" name="q9" value="d"> الكالسيوم والبوتاسيوم</label>
-            </div>
-
-            <div class="question" id="q10">
-              <p>10. تكون خلايا العضلات التي تقوم بنشاط عنيف نسبة عالية من:</p>
-              <label class="option"><input type="radio" name="q10" value="a"> حمض اللاكتيك</label>
-              <label class="option"><input type="radio" name="q10" value="b"> حمض البيروفيك</label>
-              <label class="option"><input type="radio" name="q10" value="c"> حمض الستريك</label>
-              <label class="option"><input type="radio" name="q10" value="d"> حمض الأسيتيك</label>
-            </div>
-
-            <div class="question" id="q11">
-              <p>11. من أسباب الإجهاد السريع لعضلة الفخذ:</p>
-              <label class="option"><input type="radio" name="q11" value="a"> زيادة نسبة الجليكوجين بالعضلة</label>
-              <label class="option"><input type="radio" name="q11" value="b"> ضيق الشرايين المغذية للعضلة</label>
-              <label class="option"><input type="radio" name="q11" value="c"> زيادة الأكسجين الوارد للعضلة</label>
-              <label class="option"><input type="radio" name="q11" value="d"> نقص ثاني أكسيد الكربون بالعضلة</label>
-            </div>
-
-            <div class="question" id="q12">
-              <p>12. النسبة بين حجم عظمة الكيعرة إلى حجم عظمة الزند:</p>
-              <label class="option"><input type="radio" name="q12" value="a"> تساوي واحد</label>
-              <label class="option"><input type="radio" name="q12" value="b"> أقل من واحد</label>
-              <label class="option"><input type="radio" name="q12" value="c"> أكبر من واحد</label>
-              <label class="option"><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
-            </div>
-
-            <div class="question" id="q13">
-              <p>13. الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
-              <label class="option"><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
-              <label class="option"><input type="radio" name="q13" value="b"> النتوء الشوكي</label>
-              <label class="option"><input type="radio" name="q13" value="c"> عظمة القص</label>
-              <label class="option"><input type="radio" name="q13" value="d"> جسم الفقرة القطنية</label>
-            </div>
-
-            <div class="question" id="q14">
-              <p>14. تتغذى الغضاريف عن طريق:</p>
-              <label class="option"><input type="radio" name="q14" value="a"> أوعية دموية شريانية</label>
-              <label class="option"><input type="radio" name="q14" value="b"> أوعية دموية وريدية</label>
-              <label class="option"><input type="radio" name="q14" value="c"> الانتشار من العظام</label>
-              <label class="option"><input type="radio" name="q14" value="d"> الاسموزية من العظام</label>
-            </div>
-
-            <div class="question" id="q15">
-              <p>15. أصغر وحدة تخزين هي:</p>
-              <label class="option"><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
-              <label class="option"><input type="radio" name="q15" value="b"> الليفة العضلية</label>
-              <label class="option"><input type="radio" name="q15" value="c"> القطعة العضلية</label>
-            </div>
-
-          </form>
-
-          <div class="actions">
-            <button id="submitBtn" class="primary">تسليم</button>
           </div>
-
         </div>
 
         <aside>
@@ -189,13 +186,12 @@
         </aside>
       </div>
 
-      <!-- منطقة النتائج (تُظهر بعد التسليم) -->
       <div id="resultsArea" style="display:none" class="card result"></div>
 
-      <div id="locked" class="card" style="display:none;margin-top:12px">
-        <div class="locked">⚠️ هذا الامتحان مغلق — لقد تم التقديم بالفعل من هذا المتصفح.</div>
-        <div style="text-align:center;margin-top:8px;color:var(--muted)">تم التسليم بتاريخ: <span id="takenAt"></span></div>
-        <div style="text-align:center;margin-top:6px;color:var(--muted)">المدة المستغرقة: <span id="duration"></span></div>
+      <div id="locked" style="display:none" class="locked">
+        ⚠️ هذا الامتحان مغلق — لقد تم التقديم بالفعل من هذا المتصفح.
+        <div style="margin-top:8px;color:var(--muted)">تم التسليم بتاريخ: <span id="takenAt"></span></div>
+        <div style="margin-top:6px;color:var(--muted)">المدة المستغرقة: <span id="duration"></span></div>
       </div>
 
       <footer>© جميع الحقوق محفوظة ـ أدهم 2025</footer>
@@ -204,18 +200,18 @@
 
 <script>
 (function(){
-  const WA_NUMBER = "+201102323525"; // سيتم استخدامه داخل الكود فقط (لن يظهر في الصفحة)
-  const STORAGE_KEY = "exam_one_time_auto_send_v1";
+  const WA_NUMBER = "+201102323525"; // رقمك (لن يظهر في الصفحة)
+  const STORAGE_KEY = "exam_auto_send_then_show_v1";
   const TOTAL_SECONDS = 25 * 60; // 25 دقيقة
 
-  // قائمة الإجابات الصحيحة
+  // إجابات صحيحة كما علّمت عليها
   const correctAnswers = {
     q1:"d", q2:"a", q3:"a", q4:"b", q5:"a",
     q6:"c", q7:"a", q8:"a", q9:"a", q10:"a",
     q11:"b", q12:"b", q13:"d", q14:"c", q15:"c"
   };
 
-  // عناصر DOM
+  // DOM
   const form = document.getElementById("quizForm");
   const submitBtn = document.getElementById("submitBtn");
   const timeSpan = document.getElementById("time");
@@ -224,30 +220,29 @@
   const lockedCard = document.getElementById("locked");
   const takenAtSpan = document.getElementById("takenAt");
   const durationSpan = document.getElementById("duration");
-  const examCard = document.getElementById("examCard");
 
-  // منع إعادة الدخول لو اتسلم قبل كده
+  // منع إعادة الدخول إذا تم تسليم سابقًا
   const prev = localStorage.getItem(STORAGE_KEY);
   if (prev) {
-    // اقفال الفورم وعرض رسالة
-    form.style.display = "none";
-    document.getElementById("submitBtn").style.display = "none";
-    lockedCard.style.display = "block";
     try {
       const p = JSON.parse(prev);
+      // إظهار صفحة مقفولة + نتائج محفوظة
+      form.style.display = "none";
+      submitBtn.style.display = "none";
+      resultsArea.style.display = "block";
+      showResults(p); // يعرض النتائج المحفوظة
+      lockedCard.style.display = "block";
       takenAtSpan.textContent = new Date(p.takenAt).toLocaleString("ar-EG");
       durationSpan.textContent = formatDuration(p.durationSeconds || 0);
       timeSpan.textContent = "00:00";
       updateProgress(0);
-      // عرض نتائج محفوظة
-      showResultsFromPayload(p);
     } catch(e){
-      takenAtSpan.textContent = "تم سابقًا";
+      console.warn(e);
     }
     return;
   }
 
-  // عداد تنازلي
+  // عداد
   let remaining = TOTAL_SECONDS;
   const startTime = Date.now();
   let timer = setInterval(() => {
@@ -265,6 +260,7 @@
     progressBar.style.width = percent + "%";
   }
 
+  // حماية بسيطة ضد الفأرة اليمنى وF5
   document.addEventListener("contextmenu", e => e.preventDefault());
   document.addEventListener("keydown", function(e){
     if (e.key === "F5" || (e.ctrlKey && e.key.toLowerCase() === "r")) {
@@ -303,7 +299,7 @@
     return {correct, total:15, percent: Math.round((correct/15)*100), wrongDetails};
   }
 
-  // تهيئة رسالة واتساب (تفصيلية)
+  // بناء رسالة الواتساب التفصيلية
   function buildWhatsAppMessage(payload){
     const scoring = payload.score;
     const takenAt = new Date(payload.takenAt);
@@ -327,7 +323,7 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
     return msg;
   }
 
-  // إظهار النتائج على الصفحة بعد التسليم
+  // عرض النتائج على الصفحة
   function showResults(payload){
     const scoring = payload.score;
     const responses = payload.responses;
@@ -336,7 +332,6 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
       <p><strong>✅ عدد الإجابات الصحيحة:</strong> ${scoring.correct} من ${scoring.total}</p>
       <p><strong>⏱ المدة المستغرقة:</strong> ${formatDuration(payload.durationSeconds)}</p>
       <hr/>`;
-    // لكل سؤال: اشير إن كان صح أم غلط واعرض الصح لو غلط
     const list = document.createElement("div");
     for (let i=1;i<=15;i++){
       const q = "q"+i;
@@ -357,13 +352,6 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
     resultsArea.style.display = "block";
   }
 
-  // عرض نتائج محفوظة (عند إعادة تحميل بعد تسليم)
-  function showResultsFromPayload(p){
-    try {
-      showResults(p);
-    } catch(e){}
-  }
-
   // تنسيق مدة
   function formatDuration(sec){
     const m = Math.floor(sec/60);
@@ -371,14 +359,13 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
     return `${m} دقيقة و ${s} ثانية`;
   }
 
-  // دالة إنهاء الامتحان (تسليم) - triggeredBySubmit=true عندما يضغط الزر
+  // إنهاء الامتحان: triggeredBySubmit=true عندما يضغط الزر (نفتح واتساب) 
   function finalizeExam(reason, triggeredBySubmit){
     if (localStorage.getItem(STORAGE_KEY)) return;
     clearInterval(timer);
 
     const responses = collectAnswers();
     const scoring = grade(responses);
-
     const takenAt = new Date();
     const durationSeconds = Math.max(0, Math.round((takenAt.getTime() - startTime)/1000));
 
@@ -390,45 +377,50 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
       durationSeconds: durationSeconds
     };
 
-    // احفظ الحالة فورًا
+    // حفظ في localStorage فوراً لمنع إعادة الدخول
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); } catch(e){ console.warn(e); }
 
-    // لو التسليم بواسطة زر (تفاعل مباشر) نفتح واتساب أولاً ثم نعرض النتائج
+    // إذا الضغط كان يدوي - نفتح واتساب أولاً، ثم نعرض النتائج بعد فترة قصيرة
     if (triggeredBySubmit) {
       const waMsg = buildWhatsAppMessage(payload);
       const encoded = encodeURIComponent(waMsg);
       const waUrl = `https://wa.me/${WA_NUMBER.replace(/^\+/, "")}?text=${encoded}`;
-      // فتح نافذة واتساب (يُفعل لأن هذا ضمن حدث نقر المستخدم)
       try {
         window.open(waUrl, "_blank");
-      } catch(e) { console.warn("فتح واتساب فشل:", e); }
+      } catch(e){ console.warn("فتح واتساب فشل:", e); }
+      // اعطِ المتصفح/النظام 1.8 ثانية لفتح الواتساب ثم عرض النتائج
+      setTimeout(() => {
+        form.style.display = "none";
+        submitBtn.style.display = "none";
+        showResults(payload);
+        lockedCard.style.display = "block";
+        takenAtSpan.textContent = new Date(payload.takenAt).toLocaleString("ar-EG");
+        durationSpan.textContent = formatDuration(durationSeconds);
+        timeSpan.textContent = "00:00";
+        updateProgress(0);
+        try { alert("تم إرسال النتيجة على واتساب وعرض النتائج هنا. لا يمكنك إعادة الدخول من نفس المتصفح."); } catch(e){}
+      }, 1800);
+    } else {
+      // تسليم آلي (انتهاء وقت أو خروج) — لا نفتح واتساب لأن المتصفحات تمنع ذلك أثناء أحداث الإغلاق
+      form.style.display = "none";
+      submitBtn.style.display = "none";
+      showResults(payload);
+      lockedCard.style.display = "block";
+      takenAtSpan.textContent = new Date(payload.takenAt).toLocaleString("ar-EG");
+      durationSpan.textContent = formatDuration(durationSeconds);
+      timeSpan.textContent = "00:00";
+      updateProgress(0);
     }
-
-    // اقفال الامتحان في الصفحة ومنع التفاعل
-    form.style.display = "none";
-    submitBtn.style.display = "none";
-    // عرض نتائج وبيانات التسليم
-    resultsArea.style.display = "block";
-    showResults(payload);
-    lockedCard.style.display = "block";
-    takenAtSpan.textContent = new Date(payload.takenAt).toLocaleString("ar-EG");
-    durationSpan.textContent = formatDuration(durationSeconds);
-    timeSpan.textContent = "00:00";
-    updateProgress(0);
-
-    // ننبّه الطالب
-    try { alert("تم تسليم الامتحان ✅\nالنتيجة أُرسِلت على واتساب. سيتم إغلاق الامتحان ولن يمكنك إعادة الدخول من نفس المتصفح."); } catch(e){}
   }
 
-  // زر التسليم
+  // زر التسليم — حدث نقر
   submitBtn.addEventListener("click", function(e){
     e.preventDefault();
-    // تأكد على الأقل من اختيار شيء (مش إجباري كل الأسئلة)
-    if (!confirm("هل أنت متأكد من أنك تريد تسليم الامتحان الآن؟ بعد التسليم لن تتمكن من إعادة الدخول.")) return;
+    if (!confirm("هل أنت متأكد من تسليم الامتحان الآن؟ بعد التسليم لن تتمكن من إعادة الدخول.")) return;
     finalizeExam("تسليم يدوي", true);
   });
 
-  // إذا أغلق/غير تبويب => نعتبرها تسليمًا (نسجل لكن لا نفتح واتساب)
+  // إذا غادر/غير تبويب => تسليم آلي (نسجل فقط)
   function handleLeave(){
     if (localStorage.getItem(STORAGE_KEY)) return;
     finalizeExam("الخروج من الصفحة/إغلاق", false);
@@ -436,15 +428,15 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
   window.addEventListener("pagehide", handleLeave);
   document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") handleLeave(); });
 
-  // مراقبة localStorage من تبويب آخر
+  // تحديث من تبويب آخر
   window.addEventListener("storage", function(e){
     if (e.key === STORAGE_KEY && e.newValue) {
       try {
         const p = JSON.parse(e.newValue);
         form.style.display = "none";
         submitBtn.style.display = "none";
-        lockedCard.style.display = "block";
         showResults(p);
+        lockedCard.style.display = "block";
         takenAtSpan.textContent = new Date(p.takenAt).toLocaleString("ar-EG");
         durationSpan.textContent = formatDuration(p.durationSeconds || 0);
         timeSpan.textContent = "00:00";
@@ -456,4 +448,4 @@ ${scoring.wrongDetails.length ? "تفاصيل الأخطاء:\n" : ""}${wrongTex
 })();
 </script>
 </body>
-                                      </html>
+                  </html>
