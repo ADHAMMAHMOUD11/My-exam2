@@ -1,163 +1,190 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>امتحان تالتة ثانوي - فيزياء</title>
+<title>امتحان تالتة ثانوي - أحياء</title>
 <style>
-body {
-  font-family: 'Tahoma', sans-serif;
-  background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
-  padding: 20px;
-  direction: rtl;
-}
-h1 {
-  text-align: center;
-  color: #d11a2a;
-  margin-bottom: 10px;
-}
-.timer {
-  text-align: center;
-  font-size: 20px;
-  color: #007bff;
-  margin-bottom: 25px;
-}
-.question {
-  background: #fff;
-  padding: 18px;
-  border-radius: 12px;
-  margin: 12px 0;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  transition: 0.2s;
-}
-.question:hover {
-  transform: scale(1.01);
-}
-p {
-  font-weight: bold;
-  color: #333;
-}
-.options { margin-right: 8px; }
-label { cursor: pointer; display: block; margin: 6px 0; }
-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  display: block;
-  margin: 20px auto;
-  transition: 0.3s;
-}
-button:hover {
-  background: #0056b3;
-  transform: scale(1.02);
-}
-.result-box {
-  background: #fff;
-  padding: 18px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  margin-top: 20px;
-}
-.result-box p { font-size: 16px; }
-footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  color: #555;
-}
-small.hint { color:#666; display:block; margin-top:8px; }
+body { font-family: 'Tahoma', sans-serif; background: linear-gradient(135deg,#f9f9f9,#e3f2fd); padding:20px; direction:rtl; }
+h1 { text-align:center; color:#d11a2a; margin-bottom:10px; }
+.timer { text-align:center; font-size:20px; color:#007bff; margin-bottom:25px; }
+.question { background:#fff; padding:18px; border-radius:12px; margin:12px 0; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:0.2s; }
+.question:hover { transform:scale(1.01); }
+p { font-weight:bold; color:#333; }
+.options { margin-right:8px; }
+label { cursor:pointer; display:block; margin:6px 0; }
+button { background:#007bff; color:#fff; border:none; padding:12px 25px; border-radius:8px; cursor:pointer; font-size:18px; display:block; margin:20px auto; transition:0.3s; }
+button:hover { background:#0056b3; transform:scأده1.02); }
+.result-box { background:#fff; padding:18px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); margin-top:20px; }
+.result-box p { font-size:16px; }
+footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
 </style>
 </head>
 <body>
 
-<h1>امتحان تالتة ثانوي - نموذج فيزياء</h1>
-<div class="timer">⏱ الوقت المتبقي: <span id="time">15:00</span></div>
+<h1>امتحان تالتة ثانوي - أحياء</h1>
+<div class="timer">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
 
 <form id="quizForm">
-  <!-- الأسئلة -->
-  <div class="question"><p>1. سحب سلك معدني منتظم المقطع فقل نصف قطره بنسبة 20%، فإن المقاومة الكهربائية للسلك تزداد بنسبة تقريباً:</p>
-    <label><input type="radio" name="q1" value="a"> 44%</label>
-    <label><input type="radio" name="q1" value="b"> 56%</label>
-    <label><input type="radio" name="q1" value="c"> 144%</label>
-    <label><input type="radio" name="q1" value="d"> 244%</label></div>
 
-  <div class="question"><p>2. سحب سلك حتى أصبح طوله ضعف طوله الأصلي، فتصبح مقاومته:</p>
-    <label><input type="radio" name="q2" value="a"> نصف قيمتها الأصلية</label>
-    <label><input type="radio" name="q2" value="b"> ضعف قيمتها الأصلية</label>
-    <label><input type="radio" name="q2" value="c"> أربعة أمثال قيمتها الأصلية</label>
-    <label><input type="radio" name="q2" value="d"> ربع قيمتها الأصلية</label></div>
+<!-- س1 -->
+<div class="question">
+<p>1. أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
+<label><input type="radio" name="q1" value="a"> لوح الكتف</label>
+<label><input type="radio" name="q1" value="b"> المفصل</label>
+<label><input type="radio" name="q1" value="c"> الأربطة</label>
+<label><input type="radio" name="q1" value="d"> منطقة الحوض</label>
+</div>
 
-  <div class="question"><p>3. تيار شدته 3 mA يمر في سلك AB. فإذا وصل معه على التوازي سلك آخر من نفس المادة وله نفس الطول وقطره ثلاثة أمثال قطر السلك AB، فإن شدة التيار الكلي اللازم إمراره حتى يظل فرق الجهد ثابتاً هي:</p>
-    <label><input type="radio" name="q3" value="a"> 0.02 A</label>
-    <label><input type="radio" name="q3" value="b"> 0.1 A</label>
-    <label><input type="radio" name="q3" value="c"> 0.03 A</label>
-    <label><input type="radio" name="q3" value="d"> 0.5 A</label></div>
+<!-- س2 -->
+<div class="question">
+<p>2. النسبة بين طول الضلع رقم (6) إلى طول الضلع رقم (1):</p>
+<label><input type="radio" name="q2" value="a"> أكبر من واحد</label>
+<label><input type="radio" name="q2" value="b"> أقل من واحد</label>
+<label><input type="radio" name="q2" value="c"> يساوي واحد</label>
+<label><input type="radio" name="q2" value="d"> لا يمكن تحديده</label>
+</div>
 
-  <div class="question"><p>4. مصدر كهربى قوته الدافعة 8V ومقاومته الداخلية r، فإن فرق الجهد بين طرفيه فى حالة مرور تيار كهربى يكون:</p>
-    <label><input type="radio" name="q4" value="a"> يساوي 8V</label>
-    <label><input type="radio" name="q4" value="b"> أقل من 8V</label>
-    <label><input type="radio" name="q4" value="c"> أكبر من 8V</label>
-    <label><input type="radio" name="q4" value="d"> لا يمكن تحديدها</label></div>
+<!-- س3 -->
+<div class="question">
+<p>3. النسبة بين عدد عظام الحزام الحوضي إلى عظام الحزام الصدري كنسبة:</p>
+<label><input type="radio" name="q3" value="a"> (1 إلى 2)</label>
+<label><input type="radio" name="q3" value="b"> (1 إلى 1)</label>
+<label><input type="radio" name="q3" value="c"> (3 إلى 2)</label>
+<label><input type="radio" name="q3" value="d"> (2 إلى 1)</label>
+</div>
 
-  <div class="question"><p>5. ثلاثة أسلاك نحاسية x و y و z لها نفس مساحة المقطع وأطوالها 1m ، 4m ، 2m على الترتيب. فإن نسبة مقاومة الأسلاك الثلاثة على الترتيب هي:</p>
-    <label><input type="radio" name="q5" value="a"> 4 : 1 : 2</label>
-    <label><input type="radio" name="q5" value="b"> 1 : 4 : 2</label>
-    <label><input type="radio" name="q5" value="c"> 2 : 1 : 4</label>
-    <label><input type="radio" name="q5" value="d"> 2 : 4 : 1</label></div>
+<!-- س4 -->
+<div class="question">
+<p>4. أكبر تجاويف الهيكل الطرفي عمقًا:</p>
+<label><input type="radio" name="q4" value="a"> تجويف الزند</label>
+<label><input type="radio" name="q4" value="b"> التجويف الحُقِّي</label>
+<label><input type="radio" name="q4" value="c"> التجويف الأروح</label>
+<label><input type="radio" name="q4" value="d"> يكون مفصل محدود الحركة</label>
+</div>
 
-  <div class="question"><p>6. عدد من المقاومات (N) قيمة كل منها 40Ω وصلت جميعًا إما على التوالي أو على التوازي ثم وُصلت بمصدر جهد 120 فولت. فإذا كانت شدة التيار في الدائرة 15 أمبير، فإن عدد المقاومات (N) يساوي:</p>
-    <label><input type="radio" name="q6" value="a"> 6</label>
-    <label><input type="radio" name="q6" value="b"> 5</label>
-    <label><input type="radio" name="q6" value="c"> 4</label>
-    <label><input type="radio" name="q6" value="d"> 3</label></div>
+<!-- س5 -->
+<div class="question">
+<p>5. تهدف حركة الجذور الشادّة إلى:</p>
+<label><input type="radio" name="q5" value="a"> تأمين ساق النبات والأوراق</label>
+<label><input type="radio" name="q5" value="b"> زيادة طول الجذور الشادّة</label>
+<label><input type="radio" name="q5" value="c"> زيادة القدرة على امتصاص الماء</label>
+<label><input type="radio" name="q5" value="d"> زيادة قدرة النبات على القيام بعملية البناء الضوئي</label>
+</div>
 
-  <div class="question"><p>7. عمود كهربي متصل مع مقاومة R، كانت شدة التيار I، وعندما وصلت مقاومة أخرى R/2 على التوازي زاد التيار إلى الضعف، فإن المقاومة الداخلية للعمود تساوي:</p>
-    <label><input type="radio" name="q7" value="a"> R/6</label>
-    <label><input type="radio" name="q7" value="b"> 6R</label>
-    <label><input type="radio" name="q7" value="c"> R/3</label>
-    <label><input type="radio" name="q7" value="d"> R/7</label></div>
+<!-- س6 -->
+<div class="question">
+<p>6. أي المؤثرات التالية تزيد من سرعة تباعد وريقات المستحية؟</p>
+<label><input type="radio" name="q6" value="a"> سقوط الأمطار</label>
+<label><input type="radio" name="q6" value="b"> الظلام</label>
+<label><input type="radio" name="q6" value="c"> الضوء</label>
+</div>
 
-  <div class="question"><p>8. سلكان متماثلان من نفس المادة طول كل منهما 50 cm ومساحة مقطع كل منهما 2 mm² وصلا على التوالي في دائرة كهربية مع عمود قوته الدافعة 6V ومقاومته الداخلية 0.5Ω. فإذا كانت شدة التيار 2A، فإن الموصلية النوعية للمادة تساوي:</p>
-    <label><input type="radio" name="q8" value="a"> 250×10⁻⁸ Ω⁻¹·m⁻¹</label>
-    <label><input type="radio" name="q8" value="b"> 431×10⁻⁸ Ω⁻¹·m⁻¹</label>
-    <label><input type="radio" name="q8" value="c"> 396×10⁻⁸ Ω⁻¹·m⁻¹</label>
-    <label><input type="radio" name="q8" value="d"> 4×10⁻⁸ Ω⁻¹·m⁻¹</label></div>
+<!-- س7 -->
+<div class="question">
+<p>7. يمكن الاستدلال على حدوث الانسياب السيتوبلازمي بحركة:</p>
+<label><input type="radio" name="q7" value="a"> عضويات تتصف بتعدد ألوانها</label>
+<label><input type="radio" name="q7" value="b"> عضيات عديمة اللون</label>
+<label><input type="radio" name="q7" value="c"> الجدار الخلوي</label>
+<label><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
+</div>
 
-  <button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
+<!-- س8 -->
+<div class="question">
+<p>8. تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
+<label><input type="radio" name="q8" value="a"> اللحم</label>
+<label><input type="radio" name="q8" value="b"> الخلايا العضلية</label>
+<label><input type="radio" name="q8" value="c"> الليفيات العضلية</label>
+<label><input type="radio" name="q8" value="d"> القطع العضلية</label>
+</div>
+
+<!-- س9 -->
+<div class="question">
+<p>9. الأيونات التي يرتبط معدل مرورها خلال غشاء الليفة العضلية بإثارة العضلة:</p>
+<label><input type="radio" name="q9" value="a"> الصوديوم</label>
+<label><input type="radio" name="q9" value="b"> الكالسيوم والصوديوم</label>
+<label><input type="radio" name="q9" value="c"> الكلور والبروتين</label>
+<label><input type="radio" name="q9" value="d"> الكالسيوم والبوتاسيوم</label>
+</div>
+
+<!-- س10 -->
+<div class="question">
+<p>10. تكون خلايا العضلات التي تقوم بنشاط عنيف نسبة عالية من:</p>
+<label><input type="radio" name="q10" value="a"> حمض اللاكتيك</label>
+<label><input type="radio" name="q10" value="b"> حمض البيروفيك</label>
+<label><input type="radio" name="q10" value="c"> حمض الستريك</label>
+<label><input type="radio" name="q10" value="d"> حمض الأسيتيك</label>
+</div>
+
+<!-- س11 -->
+<div class="question">
+<p>11. من أسباب الإجهاد السريع لعضلة الفخذ:</p>
+<label><input type="radio" name="q11" value="a"> زيادة نسبة الجليكوجين بالعضلة</label>
+<label><input type="radio" name="q11" value="b"> ضيق الشرايين المغذية للعضلة</label>
+<label><input type="radio" name="q11" value="c"> زيادة الأكسجين الوارد للعضلة</label>
+<label><input type="radio" name="q11" value="d"> نقص ثاني أكسيد الكربون بالعضلة</label>
+</div>
+
+<!-- س12 -->
+<div class="question">
+<p>12. النسبة بين حجم عظمة الكيعرة إلى حجم عظمة الزند:</p>
+<label><input type="radio" name="q12" value="a"> تساوي واحد</label>
+<label><input type="radio" name="q12" value="b"> أقل من واحد</label>
+<label><input type="radio" name="q12" value="c"> أكبر من واحد</label>
+<label><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
+</div>
+
+<!-- س13 -->
+<div class="question">
+<p>13. الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
+<label><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
+<label><input type="radio" name="q13" value="b"> النتوء الشوكي</label>
+<label><input type="radio" name="q13" value="c"> عظمة القص</label>
+<label><input type="radio" name="q13" value="d"> جسم الفقرة القطنية</label>
+</div>
+
+<!-- س14 -->
+<div class="question">
+<p>14. تتغذى الغضاريف عن طريق:</p>
+<label><input type="radio" name="q14" value="a"> أوعية دموية شريانية</label>
+<label><input type="radio" name="q14" value="b"> أوعية دموية وريدية</label>
+<label><input type="radio" name="q14" value="c"> الانتشار من العظام</label>
+<label><input type="radio" name="q14" value="d"> الاسموزية من العظام</label>
+</div>
+
+<!-- س15 -->
+<div class="question">
+<p>15. أصغر وحدة تخزين هي:</p>
+<label><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
+<label><input type="radio" name="q15" value="b"> الليفة العضلية</label>
+<label><input type="radio" name="q15" value="c"> القطعة العضلية</label>
+</div>
+
+<button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
 </form>
 
 <div id="resultBox" class="result-box" style="display:none;"></div>
 
-<footer>&copy; جميع الحقوق محفوظة لـ أدهم 2025</footer>
+<footer>&copy; جميع الحقوق محفوظة لــ فاطمة 2025</footer>
 
 <script>
 const answers = {
-  q1: "c",
-  q2: "c",
-  q3: "c",
-  q4: "b",
-  q5: "d",
-  q6: "b",
-  q7: "d",
-  q8: "d"
+  q1:"d", q2:"a", q3:"a", q4:"b", q5:"a",
+  q6:"c", q7:"a", q8:"a", q9:"a", q10:"a",
+  q11:"b", q12:"b", q13:"d", q14:"c", q15:"c"
 };
 
-let timeLeft = 900;
+let timeLeft = 1500; // 25 دقيقة
 let startTime = Date.now();
 const timerDisplay = document.getElementById("time");
-
 let countdown = setInterval(() => {
   let elapsed = Math.floor((Date.now() - startTime)/1000);
   let remaining = timeLeft - elapsed;
-  if(remaining < 0) remaining = 0;
+  if (remaining < 0) remaining = 0;
   let m = Math.floor(remaining/60);
   let s = remaining % 60;
   timerDisplay.textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-  if(remaining <= 0){ clearInterval(countdown); submitQuiz(); }
+  if (remaining <= 0) { clearInterval(countdown); submitQuiz(); }
 },1000);
 
 function submitQuiz(){
@@ -165,23 +192,26 @@ function submitQuiz(){
   document.getElementById("quizForm").style.display = "none";
 
   let correct = 0, total = Object.keys(answers).length;
-  let resultText = "";
+  let resultText = "", whatsappDetails = "";
 
-  for(let key in answers){
+  for (let key in answers){
     const selected = document.querySelector(`input[name="${key}"]:checked`);
     let num = key.replace("q","");
     if(selected){
       let labelText = selected.parentElement.textContent.trim();
-      if(selected.value === answers[key]){
+      if(selected.value===answers[key]){
         correct++;
-        resultText += `سؤال ${num}: ✅ إجابة صحيحة (${labelText})\n`;
+        resultText += `<p>سؤال ${num}: ${labelText} ✅ إجابة صحيحة</p>`;
+        whatsappDetails += `س${num}: ✅ صحيح (${labelText})\n`;
       } else {
         let correctAnswer = document.querySelector(`input[name="${key}"][value="${answers[key]}"]`).parentElement.textContent.trim();
-        resultText += `سؤال ${num}: ❌ خطأ (${labelText})، الإجابة الصحيحة: ${correctAnswer}\n`;
+        resultText += `<p>س${num}: ${labelText} ❌ خطأ - الإجابة الصحيحة: ${correctAnswer}</p>`;
+        whatsappDetails += `س${num}: ❌ خطأ (${labelText}) → الصح: ${correctAnswer}\n`;
       }
     } else {
       let correctAnswer = document.querySelector(`input[name="${key}"][value="${answers[key]}"]`).parentElement.textContent.trim();
-      resultText += `سؤال ${num}: ❌ لم يجب، الإجابة الصحيحة: ${correctAnswer}\n`;
+      resultText += `<p>س${num}: ❌ لم يجب - الإجابة الصحيحة: ${correctAnswer}</p>`;
+      whatsappDetails += `س${num}: ❌ لم يجب → الصح: ${correctAnswer}\n`;
     }
   }
 
@@ -190,27 +220,36 @@ function submitQuiz(){
   let minutes = Math.floor(elapsed/60);
   let seconds = elapsed % 60;
 
-  let message = `📘 امتحان فيزياء - تالتة ثانوي\n\n${resultText}\n📊 النتيجة: ${correct}/${total} (${percentage}%)\n🕒 الوقت: ${minutes} دقيقة و${seconds} ثانية\n\nشكراً لك على المشاركة 💙`;
+  let messageToStudent = "";
+  if(percentage>=90) messageToStudent="🌟 ممتاز جدًا! استمر على هذا المستوى الرائع 👏";
+  else if(percentage>=75) messageToStudent="👍 أداء رائع! أنت على الطريق الصحيح 💪";
+  else if(percentage>=50) messageToStudent="🙂 جيد! محتاج شوية مراجعة بسيطة وهتوصل للأفضل 💡";
+  else messageToStudent="💪 لا تقلق، المرة الجاية هتكون أفضل! راجع الدرس وجرب تاني 🔁";
 
-  document.getElementById("resultBox").style.display = "block";
-  document.getElementById("resultBox").innerHTML = `
+  document.getElementById("resultBox").style.display="block";
+  document.getElementById("resultBox").innerHTML=`
     <h3>نتيجتك:</h3>
-    <pre>${resultText}</pre>
+    ${resultText}
     <p><strong>عدد الإجابات الصحيحة:</strong> ${correct} من ${total}</p>
     <p><strong>النسبة المئوية:</strong> ${percentage}%</p>
     <p><strong>الوقت المستغرق:</strong> ${minutes} دقيقة و${seconds} ثانية</p>
-    <h3>شكرًا لك على المشاركة 🌟</h3>
-    <button onclick="sendWhatsApp('${encodeURIComponent(message)}')">📩 إرسال نتيجتي على واتساب</button>
+    <div style="margin-top:15px; padding:10px; background:#e3f2fd; border-radius:8px; text-align:center;">
+      <p style="font-size:18px; color:#0d47a1;">${messageToStudent}</p>
+      <p style="font-size:18px; color:#0d47a1;">شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟</p>
+    </div>
   `;
-}
 
-function sendWhatsApp(msg){
-  const phone1 = "201101158596";
-  const phone2 = "201102323525";
-  window.open(`https://wa.me/${phone1}?text=${msg}`, '_blank');
-  setTimeout(()=>{ window.open(`https://wa.me/${phone2}?text=${msg}`, '_blank'); }, 1500);
+  let whatsappMsg =
+    `📘 نتيجة الطالب في امتحان الأحياء - تالتة ثانوي\n\n`+
+    `✅ عدد الإجابات الصحيحة: ${correct} من ${total}\n`+
+    `📊 النسبة المئوية: ${percentage}%\n`+
+    `⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n`+
+    `${whatsappDetails}\n`+
+    `🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
+
+  let encodedMsg = encodeURIComponent(whatsappMsg);
+  window.open(`https://wa.me/201102323525?text=${encodedMsg}`,"_blank");
 }
 </script>
-
 </body>
-  </html>
+         </html>
