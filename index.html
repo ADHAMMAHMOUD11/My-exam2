@@ -197,7 +197,7 @@ function submitQuiz(){
 
   // إرسال الرسالة للواتساب
   const phoneNumber = "+201102323525"; // الرقم المطلوب
-  const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(resultText)}`;
+  const whatsappURL = `https://api.whatsapp.com/send?phone=${+201102323525}&text=${encodeURIComponent(resultText)}`;
   window.open(whatsappURL,'_blank');
 
   // عرض صفحة النتائج
