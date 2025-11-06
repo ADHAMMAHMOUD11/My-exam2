@@ -139,19 +139,20 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
   </div>
 
   <div class="question">
-    <p>15) أصغر وحدة تخزين هي:</p>
+    <p>15) أصغر وحدة تخزين:</p>
     <label><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
     <label><input type="radio" name="q15" value="b"> الليفة العضلية</label>
     <label><input type="radio" name="q15" value="c"> القطعة العضلية</label>
+    <label><input type="radio" name="q15" value="d"> غير ذلك</label>
   </div>
 
-  <button type="button" onclick="submitQuiz()">إرسال الإجابات</button>
+  <button type="button" onclick="submitExam()">إرسال الإجابات</button>
 </form>
 </div>
 
 <div id="resultBox" class="result-box" style="display:none;"></div>
 
-<footer>&copy; جميع الحقوق محفوظة لـ التفوق نحن ذاهبون 🥇📚</footer>
+<footer>&copy; جميع الحقوق محفوظة لـ للتفوق نحن ذاهبون 🥇📚</footer>
 
 <script>
 // الإجابات الصحيحة
@@ -161,63 +162,60 @@ const answers = {
   q11:"b", q12:"b", q13:"d", q14:"c", q15:"c"
 };
 
-let timeLeft = 25*60; // 25 دقيقة
-let startTime = Date.now();
-const timerDisplay = document.getElementById("time");
+// عداد الوقت 25 دقيقة
+let timeLeft=25*60;
+const timerDisplay=document.getElementById("time");
+let startTime=Date.now();
 
-// عداد الوقت
-let countdown = setInterval(() => {
-  let elapsed = Math.floor((Date.now() - startTime)/1000);
-  let remaining = timeLeft - elapsed;
+let countdown=setInterval(()=>{
+  let elapsed=Math.floor((Date.now()-startTime)/1000);
+  let remaining=timeLeft-elapsed;
   if(remaining<0) remaining=0;
-  let m = Math.floor(remaining/60);
-  let s = remaining%60;
-  timerDisplay.textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-  if(remaining<=0){
-    clearInterval(countdown);
-    submitQuiz();
-  }
+  let m=Math.floor(remaining/60);
+  let s=remaining%60;
+  timerDisplay.textContent=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  if(remaining<=0){ clearInterval(countdown); submitExam(); }
 },1000);
 
-function submitQuiz(){
-  if(localStorage.getItem("examDone")){
-    alert("لقد أتممت الامتحان بالفعل ✅");
-    return;
-  }
-  clearInterval(countdown);
-  document.getElementById("quizForm").style.display="none";
+// منع إعادة الدخول بعد انتهاء الامتحان
+if(localStorage.getItem("examDone")) {
+  document.getElementById("examContent").innerHTML="<h2 style='text-align:center;color:red;'>لقد أكملت الامتحان بالفعل.</h2>";
+}
 
-  let correct=0, total=15, details="";
-  for(let i=1;i<=total;i++){
-    let q = document.querySelector(`input[name=q${i}]:checked`);
-    if(!q) continue;
-    if(q.value === answers[`q${i}`]){
+function submitExam(){
+  clearInterval(countdown);
+  const form=document.getElementById("quizForm");
+  let correct=0;
+  let details="";
+
+  for(let i=1;i<=15;i++){
+    const sel=form[`q${i}`].value? form[`q${i}`].value : null;
+    if(sel===answers[`q${i}`]){
       correct++;
-      let text = q.parentElement.textContent.trim();
-      details+=`س${i}: ✅ صحيح (${text})\n`;
+      details+=`س${i}: ✅ صحيح (${document.querySelector(`input[name=q${i}][value=${sel}]`).parentElement.textContent.trim()})\n`;
+    }else if(sel){
+      const correctText=document.querySelector(`input[name=q${i}][value=${answers[`q${i}`]}]`).parentElement.textContent.trim();
+      details+=`س${i}: ❌ خطأ (${document.querySelector(`input[name=q${i}][value=${sel}]`).parentElement.textContent.trim()}) → الصح: ${correctText}\n`;
     }else{
-      let text = q.parentElement.textContent.trim();
-      let correctText = document.querySelector(`input[name=q${i}][value=${answers[`q${i}`]}]`).parentElement.textContent.trim();
-      details+=`س${i}: ❌ خطأ (${text}) → الصح: ${correctText}\n`;
+      const correctText=document.querySelector(`input[name=q${i}][value=${answers[`q${i}`]}]`).parentElement.textContent.trim();
+      details+=`س${i}: ❌ لم يجب → الصح: ${correctText}\n`;
     }
   }
 
-  let elapsedTime = Math.floor((Date.now() - startTime)/1000);
-  let minutes = Math.floor(elapsedTime/60);
-  let seconds = elapsedTime%60;
+  let elapsedTime=Math.floor((Date.now()-startTime)/1000);
+  let minutes=Math.floor(elapsedTime/60);
+  let seconds=elapsedTime%60;
 
-  let resultMsg = `📘 نتيجة الطالب في امتحان الأحياء - تالتة ثانوي\n\n✅ عدد الإجابات الصحيحة: ${correct} من 15\n📊 النسبة المئوية: ${(correct/15*100).toFixed(2)}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n${details}\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
+  let msg=`📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - أحياء\n\n✅ عدد الإجابات الصحيحة: ${correct} من 15\n📊 النسبة المئوية: ${(correct/15*100).toFixed(2)}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n${details}\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
 
-  // الرقم اللي هيتبعت له الواتساب
-  let phoneNumber = "+201102323525";
-  window.open(`https://wa.me/${+201102323525}?text=${encodeURIComponent(resultMsg)}`, "_blank");
+  // إرسال للواتساب
+  let phone="+201102323525";
+  window.open(`https://wa.me/${+201102323525}?text=${encodeURIComponent(msg)}`,"_blank");
 
+  // عرض النتيجة
+  document.getElementById("quizForm").style.display="none";
   document.getElementById("resultBox").style.display="block";
-  document.getElementById("resultBox").textContent=resultMsg;
+  document.getElementById("resultBox").textContent=msg;
 
   // منع إعادة الدخول
-  localStorage.setItem("examDone","true");
-}
-</script>
-</body>
-                                                              </html>
+  localStorage.set
