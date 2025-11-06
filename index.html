@@ -25,7 +25,7 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
 <div class="timer">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
 
 <form id="quizForm">
-  <!-- 15 سؤال -->
+  <!-- أسئلة 1 إلى 15 -->
   <div class="question">
     <p>1) أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
     <label><input type="radio" name="q1" value="a"> لوح الكتف</label>
@@ -139,11 +139,10 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
   </div>
 
   <div class="question">
-    <p>15) أصغر وحدة تخزين:</p>
+    <p>15) أصغر وحدة تخزين في العضلات هي:</p>
     <label><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
     <label><input type="radio" name="q15" value="b"> الليفة العضلية</label>
     <label><input type="radio" name="q15" value="c"> القطعة العضلية</label>
-    <label><input type="radio" name="q15" value="d"> غير ذلك</label>
   </div>
 
   <button type="button" onclick="submitExam()">إرسال الإجابات</button>
@@ -162,29 +161,30 @@ const answers = {
   q11:"b", q12:"b", q13:"d", q14:"c", q15:"c"
 };
 
-// عداد الوقت 25 دقيقة
-let timeLeft=25*60;
-const timerDisplay=document.getElementById("time");
-let startTime=Date.now();
-
-let countdown=setInterval(()=>{
-  let elapsed=Math.floor((Date.now()-startTime)/1000);
-  let remaining=timeLeft-elapsed;
-  if(remaining<0) remaining=0;
-  let m=Math.floor(remaining/60);
-  let s=remaining%60;
-  timerDisplay.textContent=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-  if(remaining<=0){ clearInterval(countdown); submitExam(); }
-},1000);
-
 // منع إعادة الدخول بعد انتهاء الامتحان
-if(localStorage.getItem("examDone")) {
+if(localStorage.getItem("examDone")){
   document.getElementById("examContent").innerHTML="<h2 style='text-align:center;color:red;'>لقد أكملت الامتحان بالفعل.</h2>";
 }
 
+// عداد الوقت 25 دقيقة
+let timeLeft = 25*60;
+const timerDisplay = document.getElementById("time");
+
+let countdown = setInterval(() => {
+  if(timeLeft <= 0){
+    clearInterval(countdown);
+    submitExam();
+    return;
+  }
+  let minutes = Math.floor(timeLeft/60);
+  let seconds = timeLeft%60;
+  timerDisplay.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+  timeLeft--;
+}, 1000);
+
 function submitExam(){
   clearInterval(countdown);
-  const form=document.getElementById("quizForm");
+  const form = document.getElementById("quizForm");
   let correct=0;
   let details="";
 
@@ -202,20 +202,17 @@ function submitExam(){
     }
   }
 
-  let elapsedTime=Math.floor((Date.now()-startTime)/1000);
-  let minutes=Math.floor(elapsedTime/60);
-  let seconds=elapsedTime%60;
+  let elapsedTime = 25*60 - timeLeft;
+  let minutes = Math.floor(elapsedTime/60);
+  let seconds = elapsedTime%60;
 
-  let msg=`📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - أحياء\n\n✅ عدد الإجابات الصحيحة: ${correct} من 15\n📊 النسبة المئوية: ${(correct/15*100).toFixed(2)}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n${details}\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
+  let msg = `📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - أحياء\n\n✅ عدد الإجابات الصحيحة: ${correct} من 15\n📊 النسبة المئوية: ${(correct/15*100).toFixed(2)}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n${details}\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
 
   // إرسال للواتساب
   let phone="+201102323525";
-  window.open(`https://wa.me/${+201102323525}?text=${encodeURIComponent(msg)}`,"_blank");
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,"_blank");
 
   // عرض النتيجة
   document.getElementById("quizForm").style.display="none";
   document.getElementById("resultBox").style.display="block";
-  document.getElementById("resultBox").textContent=msg;
-
-  // منع إعادة الدخول
-  localStorage.set
+  document.getElementById("resultBox").
