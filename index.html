@@ -210,7 +210,7 @@ function submitQuiz(){
 
   // الرقم اللي هيتبعت له الواتساب
   let phoneNumber = "+201102323525";
-  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(resultMsg)}`, "_blank");
+  window.open(`https://wa.me/${+201102323525}?text=${encodeURIComponent(resultMsg)}`, "_blank");
 
   document.getElementById("resultBox").style.display="block";
   document.getElementById("resultBox").textContent=resultMsg;
