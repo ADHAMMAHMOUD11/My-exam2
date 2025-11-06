@@ -226,3 +226,19 @@ function submitQuiz(){
 </script>
 </body>
   </html>
+<script>
+// تحقق من إذا الطالب أتم الامتحان سابقاً
+if(localStorage.getItem("examDone")){
+  document.body.innerHTML = `<h1 style="text-align:center; color:#1b5e20;">لقد أتممت الامتحان بالفعل ✅</h1>`;
+} else {
+  // الكود الأصلي للامتحان
+  // ... ضع هنا كل كود الامتحان كما هو مع submitQuiz() وعداد الوقت
+}
+
+// عند إرسال الامتحان:
+function submitQuiz(){
+  // ضع كود الإرسال السابق
+  // بعد عرض النتائج وفتح واتساب، احفظ العلامة في localStorage
+  localStorage.setItem("examDone", true);
+}
+</script>
