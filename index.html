@@ -5,214 +5,231 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>امتحان الصف الثالث الثانوي - أحياء</title>
 <style>
-body { font-family: 'Tahoma', sans-serif; background: linear-gradient(135deg,#f9f9f9,#d0f0c0); padding:20px; direction:rtl; }
-h1 { text-align:center; color:#1b5e20; margin-bottom:15px; }
-.timer { text-align:center; font-size:20px; color:#2e7d32; margin-bottom:25px; }
-.question { background:#fff; padding:18px; border-radius:12px; margin:12px 0; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:0.2s; }
-.question:hover { transform:scale(1.01); }
-p { font-weight:bold; color:#333; }
-label { cursor:pointer; display:block; margin:6px 0; }
-button { background:#2e7d32; color:#fff; border:none; padding:12px 25px; border-radius:8px; cursor:pointer; font-size:18px; display:block; margin:20px auto; transition:0.3s; }
-button:hover { background:#1b5e20; transform:scale(1.02); }
-.result-box { background:#fff; padding:18px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); margin-top:20px; white-space: pre-line; }
+body { font-family: Tahoma,sans-serif; background: linear-gradient(135deg,#f6f9ff,#eef7f2); padding:20px; direction:rtl; }
+.card { max-width:900px; margin:20px auto; background:#fff; border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+h1 { text-align:center; color:#c62828; margin-bottom:15px; }
+.timer { text-align:center; font-size:18px; color:#1565c0; margin-bottom:15px; }
+.question { background:#fbfcff; padding:12px; border-radius:10px; margin-bottom:12px; border-right:5px solid #c62828; }
+label { display:block; margin:6px 0; cursor:pointer; }
+button { display:block; margin:18px auto; padding:12px 20px; background:#1565c0; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:16px; }
+.result-box { display:none; background:#fff; padding:18px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); margin-top:20px; }
+.result-box p { font-size:16px; margin:6px 0; }
 footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
+.small { color:#666; display:block; margin-top:8px; }
+.locked { color:#b71c1c; text-align:center; font-weight:bold; padding:20px; }
 </style>
 </head>
 <body>
 
-<div id="examContent">
-<h1>امتحان الصف الثالث الثانوي - أحياء</h1>
-<div class="timer">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
+<div class="card" id="container">
+  <h1>امتحان الصف الثالث الثانوي - أحياء</h1>
+  <div class="timer">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
 
-<form id="quizForm">
-  <!-- أسئلة 1 إلى 15 -->
-  <div class="question">
-    <p>1) أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
-    <label><input type="radio" name="q1" value="a"> لوح الكتف</label>
-    <label><input type="radio" name="q1" value="b"> المفصل</label>
-    <label><input type="radio" name="q1" value="c"> الأربطة</label>
-    <label><input type="radio" name="q1" value="d"> منطقة الحوض</label>
-  </div>
+  <form id="quizForm">
+    <!-- هنا الأسئلة 15 -->
+    <div class="question"><p><strong>1.</strong> أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
+      <label><input type="radio" name="q1" value="a"> لوح الكتف</label>
+      <label><input type="radio" name="q1" value="b"> المفصل</label>
+      <label><input type="radio" name="q1" value="c"> الأربطة</label>
+      <label><input type="radio" name="q1" value="d"> منطقة الحوض</label>
+    </div>
 
-  <div class="question">
-    <p>2) النسبة بين طول الضلع رقم (6) إلى طول الضلع رقم (1):</p>
-    <label><input type="radio" name="q2" value="a"> أكبر من واحد</label>
-    <label><input type="radio" name="q2" value="b"> أقل من واحد</label>
-    <label><input type="radio" name="q2" value="c"> يساوي واحد</label>
-    <label><input type="radio" name="q2" value="d"> لا يمكن تحديده</label>
-  </div>
+    <div class="question"><p><strong>2.</strong> النسبة بين طول الضلع رقم (6) إلى طول الضلع رقم (1):</p>
+      <label><input type="radio" name="q2" value="a"> أكبر من واحد</label>
+      <label><input type="radio" name="q2" value="b"> أقل من واحد</label>
+      <label><input type="radio" name="q2" value="c"> يساوي واحد</label>
+      <label><input type="radio" name="q2" value="d"> لا يمكن تحديده</label>
+    </div>
 
-  <div class="question">
-    <p>3) النسبة بين عدد عظام الحزام الحوضي إلى عظام الحزام الصدري كنسبة:</p>
-    <label><input type="radio" name="q3" value="a">(1 إلى 2)</label>
-    <label><input type="radio" name="q3" value="b">(1 إلى 1)</label>
-    <label><input type="radio" name="q3" value="c">(3 إلى 2)</label>
-    <label><input type="radio" name="q3" value="d">(2 إلى 1)</label>
-  </div>
+    <div class="question"><p><strong>3.</strong> النسبة بين عدد عظام الحزام الحوضي إلى عظام الحزام الصدري كنسبة:</p>
+      <label><input type="radio" name="q3" value="a"> (1 إلى 2)</label>
+      <label><input type="radio" name="q3" value="b"> (1 إلى 1)</label>
+      <label><input type="radio" name="q3" value="c"> (3 إلى 2)</label>
+      <label><input type="radio" name="q3" value="d"> (2 إلى 1)</label>
+    </div>
 
-  <div class="question">
-    <p>4) أكبر تجاويف الهيكل الطرفي عمقًا:</p>
-    <label><input type="radio" name="q4" value="a"> تجويف الزند</label>
-    <label><input type="radio" name="q4" value="b"> التجويف الحُقِّي</label>
-    <label><input type="radio" name="q4" value="c"> التجويف الأروح</label>
-    <label><input type="radio" name="q4" value="d"> يكون مفصل محدود الحركة</label>
-  </div>
+    <div class="question"><p><strong>4.</strong> أكبر تجاويف الهيكل الطرفي عمقًا:</p>
+      <label><input type="radio" name="q4" value="a"> تجويف الزند</label>
+      <label><input type="radio" name="q4" value="b"> التجويف الحُقِّي</label>
+      <label><input type="radio" name="q4" value="c"> التجويف الأروح</label>
+      <label><input type="radio" name="q4" value="d"> يكون مفصل محدود الحركة</label>
+    </div>
 
-  <div class="question">
-    <p>5) تهدف حركة الجذور الشادّة إلى:</p>
-    <label><input type="radio" name="q5" value="a"> تأمين ساق النبات والأوراق</label>
-    <label><input type="radio" name="q5" value="b"> زيادة طول الجذور الشادّة</label>
-    <label><input type="radio" name="q5" value="c"> زيادة القدرة على امتصاص الماء</label>
-    <label><input type="radio" name="q5" value="d"> زيادة قدرة النبات على القيام بعملية البناء الضوئي</label>
-  </div>
+    <div class="question"><p><strong>5.</strong> تهدف حركة الجذور الشادّة إلى:</p>
+      <label><input type="radio" name="q5" value="a"> تأمين ساق النبات والأوراق</label>
+      <label><input type="radio" name="q5" value="b"> زيادة طول الجذور الشادّة</label>
+      <label><input type="radio" name="q5" value="c"> زيادة القدرة على امتصاص الماء</label>
+      <label><input type="radio" name="q5" value="d"> زيادة قدرة النبات على القيام بعملية البناء الضوئي</label>
+    </div>
 
-  <div class="question">
-    <p>6) أي المؤثرات التالية تزيد من سرعة تباعد وريقات المستحية؟</p>
-    <label><input type="radio" name="q6" value="a"> سقوط الأمطار</label>
-    <label><input type="radio" name="q6" value="b"> الظلام</label>
-    <label><input type="radio" name="q6" value="c"> الضوء</label>
-    <label><input type="radio" name="q6" value="d"> لا شيء مما سبق</label>
-  </div>
+    <div class="question"><p><strong>6.</strong> أي المؤثرات التالية تزيد من سرعة تباعد وريقات المستحية؟</p>
+      <label><input type="radio" name="q6" value="a"> سقوط الأمطار</label>
+      <label><input type="radio" name="q6" value="b"> الظلام</label>
+      <label><input type="radio" name="q6" value="c"> الضوء</label>
+    </div>
 
-  <div class="question">
-    <p>7) يمكن الاستدلال على حدوث الانسياب السيتوبلازمي بحركة:</p>
-    <label><input type="radio" name="q7" value="a"> عضويات تتصف بتعدد ألوانها</label>
-    <label><input type="radio" name="q7" value="b"> عضيات عديمة اللون</label>
-    <label><input type="radio" name="q7" value="c"> الجدار الخلوي</label>
-    <label><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
-  </div>
+    <div class="question"><p><strong>7.</strong> يمكن الاستدلال على حدوث الانسياب السيتوبلازمي بحركة:</p>
+      <label><input type="radio" name="q7" value="a"> عضويات تتصف بتعدد ألوانها</label>
+      <label><input type="radio" name="q7" value="b"> عضيات عديمة اللون</label>
+      <label><input type="radio" name="q7" value="c"> الجدار الخلوي</label>
+      <label><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
+    </div>
 
-  <div class="question">
-    <p>8) تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
-    <label><input type="radio" name="q8" value="a"> اللحم</label>
-    <label><input type="radio" name="q8" value="b"> الخلايا العضلية</label>
-    <label><input type="radio" name="q8" value="c"> الليفيات العضلية</label>
-    <label><input type="radio" name="q8" value="d"> القطعة العضلية</label>
-  </div>
+    <div class="question"><p><strong>8.</strong> تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
+      <label><input type="radio" name="q8" value="a"> اللحم</label>
+      <label><input type="radio" name="q8" value="b"> الخلايا العضلية</label>
+      <label><input type="radio" name="q8" value="c"> الليفيات العضلية</label>
+      <label><input type="radio" name="q8" value="d"> القطع العضلية</label>
+    </div>
 
-  <div class="question">
-    <p>9) الأيونات التي يرتبط معدل مرورها خلال غشاء الليفة العضلية بإثارة العضلة:</p>
-    <label><input type="radio" name="q9" value="a"> الصوديوم</label>
-    <label><input type="radio" name="q9" value="b"> الكالسيوم والصوديوم</label>
-    <label><input type="radio" name="q9" value="c"> الكلور والبروتين</label>
-    <label><input type="radio" name="q9" value="d"> الكالسيوم والبوتاسيوم</label>
-  </div>
+    <div class="question"><p><strong>9.</strong> الأيونات التي يرتبط معدل مرورها خلال غشاء الليفة العضلية بإثارة العضلة:</p>
+      <label><input type="radio" name="q9" value="a"> الصوديوم</label>
+      <label><input type="radio" name="q9" value="b"> الكالسيوم والصوديوم</label>
+      <label><input type="radio" name="q9" value="c"> الكلور والبروتين</label>
+      <label><input type="radio" name="q9" value="d"> الكالسيوم والبوتاسيوم</label>
+    </div>
 
-  <div class="question">
-    <p>10) تكون خلايا العضلات التي تقوم بنشاط عنيف نسبة عالية من:</p>
-    <label><input type="radio" name="q10" value="a"> حمض اللاكتيك</label>
-    <label><input type="radio" name="q10" value="b"> حمض البيروفيك</label>
-    <label><input type="radio" name="q10" value="c"> حمض الستريك</label>
-    <label><input type="radio" name="q10" value="d"> حمض الأسيتيك</label>
-  </div>
+    <div class="question"><p><strong>10.</strong> تكون خلايا العضلات التي تقوم بنشاط عنيف نسبة عالية من:</p>
+      <label><input type="radio" name="q10" value="a"> حمض اللاكتيك</label>
+      <label><input type="radio" name="q10" value="b"> حمض البيروفيك</label>
+      <label><input type="radio" name="q10" value="c"> حمض الستريك</label>
+      <label><input type="radio" name="q10" value="d"> حمض الأسيتيك</label>
+    </div>
 
-  <div class="question">
-    <p>11) من أسباب الإجهاد السريع لعضلة الفخذ:</p>
-    <label><input type="radio" name="q11" value="a"> زيادة نسبة الجليكوجين بالعضلة</label>
-    <label><input type="radio" name="q11" value="b"> ضيق الشرايين المغذية للعضلة</label>
-    <label><input type="radio" name="q11" value="c"> زيادة الأكسجين الوارد للعضلة</label>
-    <label><input type="radio" name="q11" value="d"> نقص ثاني أكسيد الكربون بالعضلة</label>
-  </div>
+    <div class="question"><p><strong>11.</strong> من أسباب الإجهاد السريع لعضلة الفخذ:</p>
+      <label><input type="radio" name="q11" value="a"> زيادة نسبة الجليكوجين بالعضلة</label>
+      <label><input type="radio" name="q11" value="b"> ضيق الشرايين المغذية للعضلة</label>
+      <label><input type="radio" name="q11" value="c"> زيادة الأكسجين الوارد للعضلة</label>
+      <label><input type="radio" name="q11" value="d"> نقص ثاني أكسيد الكربون بالعضلة</label>
+    </div>
 
-  <div class="question">
-    <p>12) النسبة بين حجم عظمة الكيعرة إلى حجم عظمة الزند:</p>
-    <label><input type="radio" name="q12" value="a"> تساوي واحد</label>
-    <label><input type="radio" name="q12" value="b"> أقل من واحد</label>
-    <label><input type="radio" name="q12" value="c"> أكبر من واحد</label>
-    <label><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
-  </div>
+    <div class="question"><p><strong>12.</strong> النسبة بين حجم عظمة الكيعرة إلى حجم عظمة الزند:</p>
+      <label><input type="radio" name="q12" value="a"> تساوي واحد</label>
+      <label><input type="radio" name="q12" value="b"> أقل من واحد</label>
+      <label><input type="radio" name="q12" value="c"> أكبر من واحد</label>
+      <label><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
+    </div>
 
-  <div class="question">
-    <p>13) الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
-    <label><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
-    <label><input type="radio" name="q13" value="b"> النتوء الشوكي</label>
-    <label><input type="radio" name="q13" value="c"> عظمة القص</label>
-    <label><input type="radio" name="q13" value="d"> جسم الفقرة القطنية</label>
-  </div>
+    <div class="question"><p><strong>13.</strong> الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
+      <label><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
+      <label><input type="radio" name="q13" value="b"> النتوء الشوكي</label>
+      <label><input type="radio" name="q13" value="c"> عظمة القص</label>
+      <label><input type="radio" name="q13" value="d"> جسم الفقرة القطنية</label>
+    </div>
 
-  <div class="question">
-    <p>14) تتغذى الغضاريف عن طريق:</p>
-    <label><input type="radio" name="q14" value="a"> أوعية دموية شريانية</label>
-    <label><input type="radio" name="q14" value="b"> أوعية دموية وريدية</label>
-    <label><input type="radio" name="q14" value="c"> الانتشار من العظام</label>
-    <label><input type="radio" name="q14" value="d"> الاسموزية من العظام</label>
-  </div>
+    <div class="question"><p><strong>14.</strong> تتغذى الغضاريف عن طريق:</p>
+      <label><input type="radio" name="q14
+               <label><input type="radio" name="q14" value="a"> أوعية دموية شريانية</label>
+      <label><input type="radio" name="q14" value="b"> أوعية دموية وريدية</label>
+      <label><input type="radio" name="q14" value="c"> الانتشار من العظام</label>
+      <label><input type="radio" name="q14" value="d"> الاسموزية من العظام</label>
+    </div>
 
-  <div class="question">
-    <p>15) أصغر وحدة تخزين في العضلات هي:</p>
-    <label><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
-    <label><input type="radio" name="q15" value="b"> الليفة العضلية</label>
-    <label><input type="radio" name="q15" value="c"> القطعة العضلية</label>
-  </div>
+    <div class="question"><p><strong>15.</strong> أصغر وحدة تخزين هي:</p>
+      <label><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
+      <label><input type="radio" name="q15" value="b"> الليفة العضلية</label>
+      <label><input type="radio" name="q15" value="c"> القطعة العضلية</label>
+    </div>
 
-  <button type="button" onclick="submitExam()">إرسال الإجابات</button>
-</form>
+    <button type="button" id="submitBtn">تسليم الامتحان</button>
+  </form>
+
+  <div class="result-box" id="resultBox"></div>
+
+  <footer>
+    جميع الحقوق محفوظة لـ للتفوق نحن ذاهبون 🥇📚
+  </footer>
 </div>
 
-<div id="resultBox" class="result-box" style="display:none;"></div>
-
-<footer>&copy; جميع الحقوق محفوظة لـ للتفوق نحن ذاهبون 🥇📚</footer>
-
 <script>
-// الإجابات الصحيحة
-const answers = {
+const quizForm = document.getElementById("quizForm");
+const submitBtn = document.getElementById("submitBtn");
+const resultBox = document.getElementById("resultBox");
+const timeSpan = document.getElementById("time");
+
+const totalSeconds = 25*60;
+let remaining = totalSeconds;
+let startTime = Date.now();
+
+const correctAnswers = {
   q1:"d", q2:"a", q3:"a", q4:"b", q5:"a",
   q6:"c", q7:"a", q8:"a", q9:"a", q10:"a",
   q11:"b", q12:"b", q13:"d", q14:"c", q15:"c"
 };
 
-// منع إعادة الدخول بعد انتهاء الامتحان
-if(localStorage.getItem("examDone")){
-  document.getElementById("examContent").innerHTML="<h2 style='text-align:center;color:red;'>لقد أكملت الامتحان بالفعل.</h2>";
-}
+// مؤقت العد التنازلي
+let timerInterval = setInterval(() => {
+  remaining--;
+  if (remaining < 0) remaining=0;
+  const m = Math.floor(remaining/60).toString().padStart(2,"0");
+  const s = (remaining%60).toString().padStart(2,"0");
+  timeSpan.textContent = `${m}:${s}`;
+  if (remaining===0) submitQuiz();
+},1000);
 
-// عداد الوقت 25 دقيقة
-let timeLeft = 25*60;
-const timerDisplay = document.getElementById("time");
+// وظيفة التقديم
+function submitQuiz(){
+  clearInterval(timerInterval);
+  submitBtn.disabled=true;
 
-let countdown = setInterval(() => {
-  if(timeLeft <= 0){
-    clearInterval(countdown);
-    submitExam();
-    return;
-  }
-  let minutes = Math.floor(timeLeft/60);
-  let seconds = timeLeft%60;
-  timerDisplay.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-  timeLeft--;
-}, 1000);
-
-function submitExam(){
-  clearInterval(countdown);
-  const form = document.getElementById("quizForm");
-  let correct=0;
-  let details="";
+  let score=0;
+  let total=15;
+  let resultText=`📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - أحياء\n\n`;
 
   for(let i=1;i<=15;i++){
-    const sel=form[`q${i}`].value? form[`q${i}`].value : null;
-    if(sel===answers[`q${i}`]){
-      correct++;
-      details+=`س${i}: ✅ صحيح (${document.querySelector(`input[name=q${i}][value=${sel}]`).parentElement.textContent.trim()})\n`;
-    }else if(sel){
-      const correctText=document.querySelector(`input[name=q${i}][value=${answers[`q${i}`]}]`).parentElement.textContent.trim();
-      details+=`س${i}: ❌ خطأ (${document.querySelector(`input[name=q${i}][value=${sel}]`).parentElement.textContent.trim()}) → الصح: ${correctText}\n`;
+    const qname="q"+i;
+    const radios = quizForm.elements[qname];
+    let userAns = "";
+    for(const r of radios){ if(r.checked) userAns=r.value; }
+    if(userAns===correctAnswers[qname]){
+      score++;
+      resultText+=`س${i}: ✅ صحيح (${getAnswerText(qname, userAns)})\n`;
     }else{
-      const correctText=document.querySelector(`input[name=q${i}][value=${answers[`q${i}`]}]`).parentElement.textContent.trim();
-      details+=`س${i}: ❌ لم يجب → الصح: ${correctText}\n`;
+      resultText+=`س${i}: ❌ خطأ (${userAns||"لم يتم اختيار"} ) → الصح: ${getAnswerText(qname, correctAnswers[qname])}\n`;
     }
   }
+  const elapsed = Math.floor((Date.now()-startTime)/1000);
+  const minutes = Math.floor(elapsed/60);
+  const seconds = elapsed%60;
+  const percent = (score/total*100).toFixed(2);
 
-  let elapsedTime = 25*60 - timeLeft;
-  let minutes = Math.floor(elapsedTime/60);
-  let seconds = elapsedTime%60;
+  resultText+=`\n✅ عدد الإجابات الصحيحة: ${score} من ${total}\n📊 النسبة المئوية: ${percent}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
 
-  let msg = `📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - أحياء\n\n✅ عدد الإجابات الصحيحة: ${correct} من 15\n📊 النسبة المئوية: ${(correct/15*100).toFixed(2)}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n${details}\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
+  // إرسال الرسالة للواتساب
+  const phoneNumber = "+201102323525"; // الرقم المطلوب
+  const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(resultText)}`;
+  window.open(whatsappURL,'_blank');
 
-  // إرسال للواتساب
-  let phone="+201102323525";
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,"_blank");
+  // عرض صفحة النتائج
+  resultBox.style.display="block";
+  resultBox.textContent=resultText;
+  quizForm.style.display="none";
+}
 
-  // عرض النتيجة
-  document.getElementById("quizForm").style.display="none";
-  document.getElementById("resultBox").style.display="block";
-  document.getElementById("resultBox").
+// دالة لإرجاع النص الصحيح لكل إجابة
+function getAnswerText(q, val){
+  const answerTexts = {
+    q1: {a:"لوح الكتف", b:"المفصل", c:"الأربطة", d:"منطقة الحوض"},
+    q2: {a:"أكبر من واحد", b:"أقل من واحد", c:"يساوي واحد", d:"لا يمكن تحديده"},
+    q3: {a:"(1 إلى 2)", b:"(1 إلى 1)", c:"(3 إلى 2)", d:"(2 إلى 1)"},
+    q4: {a:"تجويف الزند", b:"التجويف الحُقِّي", c:"التجويف الأروح", d:"مفصل محدود الحركة"},
+    q5: {a:"تأمين ساق النبات والأوراق", b:"زيادة طول الجذور الشادّة", c:"زيادة القدرة على امتصاص الماء", d:"زيادة قدرة النبات على البناء الضوئي"},
+    q6: {a:"سقوط الأمطار", b:"الظلام", c:"الضوء"},
+    q7: {a:"عضويات تتصف بتعدد ألوانها", b:"عضيات عديمة اللون", c:"الجدار الخلوي", d:"الغشاء الخلوي"},
+    q8: {a:"اللحم", b:"الخلايا العضلية", c:"الليفيات العضلية", d:"القطع العضلية"},
+    q9: {a:"الصوديوم", b:"الكالسيوم والصوديوم", c:"الكلور والبروتين", d:"الكالسيوم والبوتاسيوم"},
+    q10:{a:"حمض اللاكتيك", b:"حمض البيروفيك", c:"حمض الستريك", d:"حمض الأسيتيك"},
+    q11:{a:"زيادة نسبة الجليكوجين", b:"ضيق الشرايين المغذية للعضلة", c:"زيادة الأكسجين الوارد للعضلة", d:"نقص ثاني أكسيد الكربون"},
+    q12:{a:"تساوي واحد", b:"أقل من واحد", c:"أكبر من واحد", d:"لا يمكن تحديده"},
+    q13:{a:"الضلع رقم (2)", b:"النتوء الشوكي", c:"عظمة القص", d:"جسم الفقرة القطنية"},
+    q14:{a:"أوعية دموية شريانية", b:"أوعية دموية وريدية", c:"الانتشار من العظام", d:"الاسموزية من العظام"},
+    q15:{a:"الأقراص البروتينية", b:"الليفة العضلية", c:"القطعة العضلية"}
+  };
+  return answerTexts[q][val]||"";
+}
+
+submitBtn.addEventListener("click", submitQuiz);
+</script>
+
+</body>
+               </html>
