@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl">. 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,6 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
   <div class="timer">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
 
   <form id="quizForm">
-
     <!-- السؤال 1 -->
     <div class="question"><p><strong>1.</strong> أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
       <label><input type="radio" name="q1" value="a"> لوح الكتف</label>
@@ -80,20 +79,6 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
       <label><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
     </div>
 
-    <!-- ***** إعلان جوجل هنا ***** -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5887915925084996"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center; margin:20px 0;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-5887915925084996"
-     data-ad-slot="8502725445"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <!-- ***** نهاية الإعلان ***** -->
-
     <!-- السؤال 8 -->
     <div class="question"><p><strong>8.</strong> تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
       <label><input type="radio" name="q8" value="a"> اللحم</label>
@@ -133,7 +118,6 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
       <label><input type="radio" name="q12" value="c"> أكبر من واحد</label>
       <label><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
     </div>
-
     <!-- السؤال 13 -->
     <div class="question"><p><strong>13.</strong> الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
       <label><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
@@ -166,9 +150,7 @@ footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
     جميع الحقوق محفوظة لـ للتفوق نحن ذاهبون 🥇📚
   </footer>
 </div>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5887915925084996"
-     crossorigin="anonymous">
-     </script>
+
 <script>
 const quizForm = document.getElementById("quizForm");
 const submitBtn = document.getElementById("submitBtn");
@@ -206,14 +188,16 @@ function getAnswerText(q, val){
   return answerTexts[q][val]||"";
 }
 
+// مفتاح لتخزين حالة التسليم
 const STORAGE_KEY = "exam_taken_v1";
 
+// منع الدخول مرة ثانية
 if(localStorage.getItem(STORAGE_KEY)){
     quizForm.style.display = "none";
     resultBox.style.display = "block";
     resultBox.textContent = "⚠️ هذا الامتحان مغلق — لقد تم التقديم بالفعل من هذا المتصفح.";
 } else {
-
+    // مؤقت العد التنازلي
     let timerInterval = setInterval(() => {
       remaining--;
       if (remaining < 0) remaining=0;
@@ -243,7 +227,6 @@ if(localStorage.getItem(STORAGE_KEY)){
           resultText+=`س${i}: ❌ خطأ (${userAns||"لم يتم اختيار"} ) → الصح: ${getAnswerText(qname, correctAnswers[qname])}\n`;
         }
       }
-
       const elapsed = Math.floor((Date.now()-startTime)/1000);
       const minutes = Math.floor(elapsed/60);
       const seconds = elapsed%60;
@@ -251,12 +234,15 @@ if(localStorage.getItem(STORAGE_KEY)){
 
       resultText+=`\n✅ عدد الإجابات الصحيحة: ${score} من ${total}\n📊 النسبة المئوية: ${percent}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
 
+      // حفظ حالة التسليم لمنع الدخول مرة ثانية
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ takenAt: new Date().toISOString(), score: score }));
 
+      // إرسال الرسالة للواتساب
       const phoneNumber = "+201101158596"; 
-      const whatsappURL = `https://api.whatsapp.com/send?phone=${201101158596}&text=${encodeURIComponent(resultText)}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${+201101158596}&text=${encodeURIComponent(resultText)}`;
       window.open(whatsappURL,'_blank');
 
+      // عرض صفحة النتائج
       resultBox.style.display="block";
       resultBox.textContent=resultText;
       quizForm.style.display="none";
@@ -265,7 +251,7 @@ if(localStorage.getItem(STORAGE_KEY)){
     submitBtn.addEventListener("click", submitQuiz);
 }
 </script>
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5887915925084996"
+     crossorigin="anonymous"></script>
 </body>
-</html>
-©Adham جميع الحقوق محفوظة لـ
+    </html>.
