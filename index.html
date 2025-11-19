@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">. 
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>امتحان الصف الثالث الثانوي - أحياء</title>
+<title>امتحان الصف الثالث الثانوي - نحو</title>
 <style>
 body { font-family: Tahoma,sans-serif; background: linear-gradient(135deg,#f6f9ff,#eef7f2); padding:20px; direction:rtl; }
 .card { max-width:900px; margin:20px auto; background:#fff; border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
@@ -14,131 +14,94 @@ label { display:block; margin:6px 0; cursor:pointer; }
 button { display:block; margin:18px auto; padding:12px 20px; background:#1565c0; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:16px; }
 .result-box { display:none; background:#fff; padding:18px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); margin-top:20px; white-space: pre-line; }
 footer { text-align:center; margin-top:30px; font-size:14px; color:#555; }
-.locked { color:#b71c1c; text-align:center; font-weight:bold; padding:20px; }
 </style>
 </head>
 <body>
 
 <div class="card" id="container">
-  <h1>امتحان الصف الثالث الثانوي - أحياء</h1>
-  <div class="timer">⏱ الوقت المتبقي: <span id="time">25:00</span></div>
+  <h1>امتحان الصف الثالث الثانوي - نحو</h1>
+  <div class="timer">⏱ الوقت المتبقي: <span id="time">15:00</span></div>
 
   <form id="quizForm">
+
     <!-- السؤال 1 -->
-    <div class="question"><p><strong>1.</strong> أي البدائل الآتية لا يُعتبر من مكونات الهيكل العظمي؟</p>
-      <label><input type="radio" name="q1" value="a"> لوح الكتف</label>
-      <label><input type="radio" name="q1" value="b"> المفصل</label>
-      <label><input type="radio" name="q1" value="c"> الأربطة</label>
-      <label><input type="radio" name="q1" value="d"> منطقة الحوض</label>
+    <div class="question"><p><strong>1.</strong> أجزاء التفضيل في قوله تعالى: {لَخَلْقُ السَّمَاوَاتِ وَالْأَرْضِ أَكْبَرُ مِنْ خَلْقِ النَّاسِ وَلكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ}</p>
+      <label><input type="radio" name="q1" value="a"> السماوات - أكبر - الناس</label>
+      <label><input type="radio" name="q1" value="b"> الأرض - أكبر - الناس</label>
+      <label><input type="radio" name="q1" value="c"> السماوات والأرض - أكبر - الناس</label>
+      <label><input type="radio" name="q1" value="d"> خلق السماوات والأرض - أكبر - خلق الناس</label>
     </div>
 
     <!-- السؤال 2 -->
-    <div class="question"><p><strong>2.</strong> النسبة بين طول الضلع رقم (6) إلى طول الضلع رقم (1):</p>
-      <label><input type="radio" name="q2" value="a"> أكبر من واحد</label>
-      <label><input type="radio" name="q2" value="b"> أقل من واحد</label>
-      <label><input type="radio" name="q2" value="c"> يساوي واحد</label>
-      <label><input type="radio" name="q2" value="d"> لا يمكن تحديده</label>
+    <div class="question"><p><strong>2.</strong> نوع ما فوق الخط في الآية الكريمة: قال تعالى:{ واتخذوا من مَقَامِ إبراهيم مُصَلًّى }. الكلمتان: مقام – مصلى</p>
+      <label><input type="radio" name="q2" value="a"> اسم زمان من فعل ثلاثي - اسم زمان من فعل غير ثلاثي</label>
+      <label><input type="radio" name="q2" value="b"> اسم مكان من فعل ثلاثي - اسم مكان من فعل غير ثلاثي</label>
+      <label><input type="radio" name="q2" value="c"> اسم زمان من فعل غير ثلاثي - اسم زمان من فعل غير ثلاثي</label>
+      <label><input type="radio" name="q2" value="d"> اسم مكان من فعل غير ثلاثي - اسم مكان من فعل غير ثلاثي</label>
     </div>
 
     <!-- السؤال 3 -->
-    <div class="question"><p><strong>3.</strong> النسبة بين عدد عظام الحزام الحوضي إلى عظام الحزام الصدري كنسبة:</p>
-      <label><input type="radio" name="q3" value="a"> (1 إلى 2)</label>
-      <label><input type="radio" name="q3" value="b"> (1 إلى 1)</label>
-      <label><input type="radio" name="q3" value="c"> (3 إلى 2)</label>
-      <label><input type="radio" name="q3" value="d"> (2 إلى 1)</label>
+    <div class="question"><p><strong>3.</strong> الكلمة التي لا تُعَدُّ اسم آلة في قوله تعالى:{ يَطُوفُ عَلَيْهِمْ وِلْدَانٌ مُخَلَّدُونَ(١٧) بِأَكْوَابٍ وَأَبَارِيقَ وَكَأْسٍ مِّن مَعِين(١٨) }</p>
+      <label><input type="radio" name="q3" value="a"> أكواب</label>
+      <label><input type="radio" name="q3" value="b"> أباريق</label>
+      <label><input type="radio" name="q3" value="c"> كأس</label>
+      <label><input type="radio" name="q3" value="d"> معين</label>
     </div>
 
     <!-- السؤال 4 -->
-    <div class="question"><p><strong>4.</strong> أكبر تجاويف الهيكل الطرفي عمقًا:</p>
-      <label><input type="radio" name="q4" value="a"> تجويف الزند</label>
-      <label><input type="radio" name="q4" value="b"> التجويف الحُقِّي</label>
-      <label><input type="radio" name="q4" value="c"> التجويف الأروح</label>
-      <label><input type="radio" name="q4" value="d"> يكون مفصل محدود الحركة</label>
+    <div class="question"><p><strong>4.</strong> الكلمتان: توقينا – إحسان</p>
+      <label><input type="radio" name="q4" value="a"> الأول قياسي، والثاني سماعي</label>
+      <label><input type="radio" name="q4" value="b"> الأول والثاني سماعيان</label>
+      <label><input type="radio" name="q4" value="c"> الأول سماعي، والثاني قياسي</label>
+      <label><input type="radio" name="q4" value="d"> الأول والثاني قياسيان</label>
     </div>
 
     <!-- السؤال 5 -->
-    <div class="question"><p><strong>5.</strong> تهدف حركة الجذور الشادّة إلى:</p>
-      <label><input type="radio" name="q5" value="a"> تأمين ساق النبات والأوراق</label>
-      <label><input type="radio" name="q5" value="b"> زيادة طول الجذور الشادّة</label>
-      <label><input type="radio" name="q5" value="c"> زيادة القدرة على امتصاص الماء</label>
-      <label><input type="radio" name="q5" value="d"> زيادة قدرة النبات على القيام بعملية البناء الضوئي</label>
+    <div class="question"><p><strong>5.</strong> ما اشتمل على اسم هيئة</p>
+      <label><input type="radio" name="q5" value="a"> {وَقُل رَبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ}</label>
+      <label><input type="radio" name="q5" value="b"> "طرب الغريب بأوبة وتلاق"</label>
+      <label><input type="radio" name="q5" value="c"> قمتُ بجَوْلَةٍ سريعةٍ لمشاهدة المعالم السياحية</label>
+      <label><input type="radio" name="q5" value="d"> فرحة العاقل يزينها الاعتدال</label>
     </div>
 
     <!-- السؤال 6 -->
-    <div class="question"><p><strong>6.</strong> أي المؤثرات التالية تزيد من سرعة تباعد وريقات المستحية؟</p>
-      <label><input type="radio" name="q6" value="a"> سقوط الأمطار</label>
-      <label><input type="radio" name="q6" value="b"> الظلام</label>
-      <label><input type="radio" name="q6" value="c"> الضوء</label>
+    <div class="question"><p><strong>6.</strong> الكلمتان: مدرِكي – المنتأَى</p>
+      <label><input type="radio" name="q6" value="a"> اسمان مقصوران</label>
+      <label><input type="radio" name="q6" value="b"> ليسـا اسمين مقصورين</label>
+      <label><input type="radio" name="q6" value="c"> الأولى منهما اسم مقصور</label>
+      <label><input type="radio" name="q6" value="d"> الثانية منهما اسم مقصور</label>
     </div>
 
     <!-- السؤال 7 -->
-    <div class="question"><p><strong>7.</strong> يمكن الاستدلال على حدوث الانسياب السيتوبلازمي بحركة:</p>
-      <label><input type="radio" name="q7" value="a"> عضويات تتصف بتعدد ألوانها</label>
-      <label><input type="radio" name="q7" value="b"> عضيات عديمة اللون</label>
-      <label><input type="radio" name="q7" value="c"> الجدار الخلوي</label>
-      <label><input type="radio" name="q7" value="d"> الغشاء الخلوي</label>
+    <div class="question"><p><strong>7.</strong> اجعل الجملة التالية لجمع المؤنث السالم: "هو ماضٍ إلى العُلا"</p>
+      <label><input type="radio" name="q7" value="a"> هم ماضون إلى العلا</label>
+      <label><input type="radio" name="q7" value="b"> هن ماضِينَ إلى العلا</label>
+      <label><input type="radio" name="q7" value="c"> هن ماضَاتٍ إلى العلا</label>
+      <label><input type="radio" name="q7" value="d"> هن ماضِيَاتٍ إلى العلا</label>
     </div>
 
     <!-- السؤال 8 -->
-    <div class="question"><p><strong>8.</strong> تتكون العضلات من أنسجة عضلية تعرف بـ:</p>
-      <label><input type="radio" name="q8" value="a"> اللحم</label>
-      <label><input type="radio" name="q8" value="b"> الخلايا العضلية</label>
-      <label><input type="radio" name="q8" value="c"> الليفيات العضلية</label>
-      <label><input type="radio" name="q8" value="d"> القطع العضلية</label>
+    <div class="question"><p><strong>8.</strong> الاسم الذي لا يصلح أن يكون اسمًا ممدودًا: «يتعرض المؤمن للعناء والابتلاء في الدنيا ليكون من السعداء في الآخرة»</p>
+      <label><input type="radio" name="q8" value="a"> للعناء</label>
+      <label><input type="radio" name="q8" value="b"> الابتلاء</label>
+      <label><input type="radio" name="q8" value="c"> الدنيا</label>
+      <label><input type="radio" name="q8" value="d"> السعداء</label>
     </div>
 
     <!-- السؤال 9 -->
-    <div class="question"><p><strong>9.</strong> الأيونات التي يرتبط معدل مرورها خلال غشاء الليفة العضلية بإثارة العضلة:</p>
-      <label><input type="radio" name="q9" value="a"> الصوديوم</label>
-      <label><input type="radio" name="q9" value="b"> الكالسيوم والصوديوم</label>
-      <label><input type="radio" name="q9" value="c"> الكلور والبروتين</label>
-      <label><input type="radio" name="q9" value="d"> الكالسيوم والبوتاسيوم</label>
+    <div class="question"><p><strong>9.</strong> إعراب "كل" في قوله تعالى: { وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ ثُمَّ تُوَفَّى كُلُّ نَفْسٍ مَا كَسَبَتْ }</p>
+      <label><input type="radio" name="q9" value="a"> توكيد</label>
+      <label><input type="radio" name="q9" value="b"> فاعل</label>
+      <label><input type="radio" name="q9" value="c"> نائب فاعل</label>
+      <label><input type="radio" name="q9" value="d"> مفعول به</label>
     </div>
 
     <!-- السؤال 10 -->
-    <div class="question"><p><strong>10.</strong> تكون خلايا العضلات التي تقوم بنشاط عنيف نسبة عالية من:</p>
-      <label><input type="radio" name="q10" value="a"> حمض اللاكتيك</label>
-      <label><input type="radio" name="q10" value="b"> حمض البيروفيك</label>
-      <label><input type="radio" name="q10" value="c"> حمض الستريك</label>
-      <label><input type="radio" name="q10" value="d"> حمض الأسيتيك</label>
-    </div>
-
-    <!-- السؤال 11 -->
-    <div class="question"><p><strong>11.</strong> من أسباب الإجهاد السريع لعضلة الفخذ:</p>
-      <label><input type="radio" name="q11" value="a"> زيادة نسبة الجليكوجين بالعضلة</label>
-      <label><input type="radio" name="q11" value="b"> ضيق الشرايين المغذية للعضلة</label>
-      <label><input type="radio" name="q11" value="c"> زيادة الأكسجين الوارد للعضلة</label>
-      <label><input type="radio" name="q11" value="d"> نقص ثاني أكسيد الكربون بالعضلة</label>
-    </div>
-
-    <!-- السؤال 12 -->
-    <div class="question"><p><strong>12.</strong> النسبة بين حجم عظمة الكيعرة إلى حجم عظمة الزند:</p>
-      <label><input type="radio" name="q12" value="a"> تساوي واحد</label>
-      <label><input type="radio" name="q12" value="b"> أقل من واحد</label>
-      <label><input type="radio" name="q12" value="c"> أكبر من واحد</label>
-      <label><input type="radio" name="q12" value="d"> لا يمكن تحديده</label>
-    </div>
-    <!-- السؤال 13 -->
-    <div class="question"><p><strong>13.</strong> الحلقة الشوكية هي حلقة عظمية تتصل بالجزء الخاص بـ:</p>
-      <label><input type="radio" name="q13" value="a"> الضلع رقم (2)</label>
-      <label><input type="radio" name="q13" value="b"> النتوء الشوكي</label>
-      <label><input type="radio" name="q13" value="c"> عظمة القص</label>
-      <label><input type="radio" name="q13" value="d"> جسم الفقرة القطنية</label>
-    </div>
-
-    <!-- السؤال 14 -->
-    <div class="question"><p><strong>14.</strong> تتغذى الغضاريف عن طريق:</p>
-      <label><input type="radio" name="q14" value="a"> أوعية دموية شريانية</label>
-      <label><input type="radio" name="q14" value="b"> أوعية دموية وريدية</label>
-      <label><input type="radio" name="q14" value="c"> الانتشار من العظام</label>
-      <label><input type="radio" name="q14" value="d"> الاسموزية من العظام</label>
-    </div>
-
-    <!-- السؤال 15 -->
-    <div class="question"><p><strong>15.</strong> أصغر وحدة تخزين هي:</p>
-      <label><input type="radio" name="q15" value="a"> الأقراص البروتينية</label>
-      <label><input type="radio" name="q15" value="b"> الليفة العضلية</label>
-      <label><input type="radio" name="q15" value="c"> القطعة العضلية</label>
+    <div class="question"><p><strong>10.</strong> تحليل: "أليسَ طِلابُ ما قد فات جهلًا وذكرُ المرءِ ما لا يستطيعُ"</p>
+      <label><input type="radio" name="q10" value="a"> لا يستطيع – جملة فعلية</label>
+      <label><input type="radio" name="q10" value="b"> ما – مفرد</label>
+      <label><input type="radio" name="q10" value="c"> قد فات – جملة فعلية</label>
+      <label><input type="radio" name="q10" value="d"> جهلًا – مفرد</label>
     </div>
 
     <button type="button" id="submitBtn">تسليم الامتحان</button>
@@ -157,47 +120,39 @@ const submitBtn = document.getElementById("submitBtn");
 const resultBox = document.getElementById("resultBox");
 const timeSpan = document.getElementById("time");
 
-const totalSeconds = 25*60;
+const totalSeconds = 15*60;
 let remaining = totalSeconds;
 let startTime = Date.now();
 
 const correctAnswers = {
-  q1:"d", q2:"a", q3:"a", q4:"b", q5:"a",
-  q6:"c", q7:"a", q8:"a", q9:"a", q10:"a",
-  q11:"b", q12:"b", q13:"d", q14:"c", q15:"c"
+  q1:"d", q2:"b", q3:"d", q4:"d", q5:"d",
+  q6:"d", q7:"d", q8:"c", q9:"c", q10:"d"
 };
 
 function getAnswerText(q, val){
   const answerTexts = {
-    q1: {a:"لوح الكتف", b:"المفصل", c:"الأربطة", d:"منطقة الحوض"},
-    q2: {a:"أكبر من واحد", b:"أقل من واحد", c:"يساوي واحد", d:"لا يمكن تحديده"},
-    q3: {a:"(1 إلى 2)", b:"(1 إلى 1)", c:"(3 إلى 2)", d:"(2 إلى 1)"},
-    q4: {a:"تجويف الزند", b:"التجويف الحُقِّي", c:"التجويف الأروح", d:"مفصل محدود الحركة"},
-    q5: {a:"تأمين ساق النبات والأوراق", b:"زيادة طول الجذور الشادّة", c:"زيادة القدرة على امتصاص الماء", d:"زيادة قدرة النبات على البناء الضوئي"},
-    q6: {a:"سقوط الأمطار", b:"الظلام", c:"الضوء"},
-    q7: {a:"عضويات تتصف بتعدد ألوانها", b:"عضيات عديمة اللون", c:"الجدار الخلوي", d:"الغشاء الخلوي"},
-    q8: {a:"اللحم", b:"الخلايا العضلية", c:"الليفيات العضلية", d:"القطع العضلية"},
-    q9: {a:"الصوديوم", b:"الكالسيوم والصوديوم", c:"الكلور والبروتين", d:"الكالسيوم والبوتاسيوم"},
-    q10:{a:"حمض اللاكتيك", b:"حمض البيروفيك", c:"حمض الستريك", d:"حمض الأسيتيك"},
-    q11:{a:"زيادة نسبة الجليكوجين", b:"ضيق الشرايين المغذية للعضلة", c:"زيادة الأكسجين الوارد للعضلة", d:"نقص ثاني أكسيد الكربون"},
-    q12:{a:"تساوي واحد", b:"أقل من واحد", c:"أكبر من واحد", d:"لا يمكن تحديده"},
-    q13:{a:"الضلع رقم (2)", b:"النتوء الشوكي", c:"عظمة القص", d:"جسم الفقرة القطنية"},
-    q14:{a:"أوعية دموية شريانية", b:"أوعية دموية وريدية", c:"الانتشار من العظام", d:"الاسموزية من العظام"},
-    q15:{a:"الأقراص البروتينية", b:"الليفة العضلية", c:"القطعة العضلية"}
+    q1:{a:"السماوات - أكبر - الناس",b:"الأرض - أكبر - الناس",c:"السماوات والأرض - أكبر - الناس",d:"خلق السماوات والأرض - أكبر - خلق الناس"},
+    q2:{a:"اسم زمان من فعل ثلاثي - اسم زمان من فعل غير ثلاثي",b:"اسم مكان من فعل ثلاثي - اسم مكان من فعل غير ثلاثي",c:"اسم زمان من فعل غير ثلاثي - اسم زمان من فعل غير ثلاثي",d:"اسم مكان من فعل غير ثلاثي - اسم مكان من فعل غير ثلاثي"},
+    q3:{a:"أكواب",b:"أباريق",c:"كأس",d:"معين"},
+    q4:{a:"الأول قياسي، والثاني سماعي",b:"الأول والثاني سماعيان",c:"الأول سماعي، والثاني قياسي",d:"الأول والثاني قياسيان"},
+    q5:{a:"{وَقُل رَبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ}",b:"طرب الغريب بأوبة وتلاق",c:"قمتُ بجَوْلَةٍ سريعةٍ لمشاهدة المعالم السياحية",d:"فرحة العاقل يزينها الاعتدال"},
+    q6:{a:"اسمان مقصوران",b:"ليسـا اسمين مقصورين",c:"الأولى منهما اسم مقصور",d:"الثانية منهما اسم مقصور"},
+    q7:{a:"هم ماضون إلى العلا",b:"هن ماضِينَ إلى العلا",c:"هن ماضَاتٍ إلى العلا",d:"هن ماضِيَاتٍ إلى العلا"},
+    q8:{a:"للعناء",b:"الابتلاء",c:"الدنيا",d:"السعداء"},
+    q9:{a:"توكيد",b:"فاعل",c:"نائب فاعل",d:"مفعول به"},
+    q10:{a:"لا يستطيع – جملة فعلية",b:"ما – مفرد",c:"قد فات – جملة فعلية",d:"جهلًا – مفرد"}
   };
   return answerTexts[q][val]||"";
 }
 
 // مفتاح لتخزين حالة التسليم
-const STORAGE_KEY = "exam_taken_v1";
+const STORAGE_KEY = "exam_nahw_taken_v1";
 
-// منع الدخول مرة ثانية
 if(localStorage.getItem(STORAGE_KEY)){
     quizForm.style.display = "none";
     resultBox.style.display = "block";
     resultBox.textContent = "⚠️ هذا الامتحان مغلق — لقد تم التقديم بالفعل من هذا المتصفح.";
 } else {
-    // مؤقت العد التنازلي
     let timerInterval = setInterval(() => {
       remaining--;
       if (remaining < 0) remaining=0;
@@ -212,10 +167,10 @@ if(localStorage.getItem(STORAGE_KEY)){
       submitBtn.disabled=true;
 
       let score=0;
-      let total=15;
-      let resultText=`📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - أحياء\n\n`;
+      let total=10;
+      let resultText=`📘 نتيجة الطالب في امتحان الصف الثالث الثانوي - نحو\n\n`;
 
-      for(let i=1;i<=15;i++){
+      for(let i=1;i<=10;i++){
         const qname="q"+i;
         const radios = quizForm.elements[qname];
         let userAns = "";
@@ -234,15 +189,12 @@ if(localStorage.getItem(STORAGE_KEY)){
 
       resultText+=`\n✅ عدد الإجابات الصحيحة: ${score} من ${total}\n📊 النسبة المئوية: ${percent}%\n⏱ الوقت المستغرق: ${minutes} دقيقة و${seconds} ثانية\n\n🎓 شكرًا لمشاركتك في الامتحان، بالتوفيق دائمًا 🌟`;
 
-      // حفظ حالة التسليم لمنع الدخول مرة ثانية
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ takenAt: new Date().toISOString(), score: score }));
 
-      // إرسال الرسالة للواتساب
       const phoneNumber = "+201101158596"; 
-      const whatsappURL = `https://api.whatsapp.com/send?phone=${+201101158596}&text=${encodeURIComponent(resultText)}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber.replace('+','')}&text=${encodeURIComponent(resultText)}`;
       window.open(whatsappURL,'_blank');
 
-      // عرض صفحة النتائج
       resultBox.style.display="block";
       resultBox.textContent=resultText;
       quizForm.style.display="none";
@@ -251,7 +203,6 @@ if(localStorage.getItem(STORAGE_KEY)){
     submitBtn.addEventListener("click", submitQuiz);
 }
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5887915925084996"
-     crossorigin="anonymous"></script>
+
 </body>
-    </html>.
+  </html>
